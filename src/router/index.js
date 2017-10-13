@@ -7,15 +7,23 @@ import Signup from '@/components/user/Signup'
 import Logout from '@/components/user/Logout'
 import Account from '@/components/user/Account'
 import LegalTerms from '@/components/info/LegalTerms'
+import TestPage from '@/components/test/test'
 
 Vue.use(Router)
 
 const routes = [
+
   {
     name: 'Chat',
     path: '/',
-    component: ChatPage,
-  }, {
+    component: ChatPage
+  },
+  {
+    name: 'test',
+    path: '/test',
+    component: TestPage
+  },
+  {
     name: 'User',
     path: '/user',
     component: UserPage,
@@ -23,29 +31,29 @@ const routes = [
       {
         name: 'Login',
         path: 'login',
-        component: Login,
+        component: Login
       },
       {
         name: 'Signup',
         path: 'signup',
-        component: Signup,
+        component: Signup
       },
       {
         name: 'Account',
         path: 'account',
-        component: Account,
+        component: Account
       },
       {
         name: 'Logout',
         path: 'logout',
-        component: Logout,
-      },
+        component: Logout
+      }
     ]
   }, {
     name: 'LegalTerms',
     path: '/legal-terms',
-    component: LegalTerms,
+    component: LegalTerms
   }
 ]
 
-export default new Router({ routes })
+export default new Router({ mode: 'history', routes })

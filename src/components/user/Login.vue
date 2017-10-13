@@ -12,7 +12,6 @@
     <div class="links">
       <router-link :to="{ name: 'Signup'}">{{$t('components.user.signup.notYetMember')}}</router-link>
     </div>
-  </div>
 </form>
 </template>
 <script>
@@ -27,7 +26,7 @@ export default {
   data: function data () {
     return {
       username: '',
-      password: '',
+      password: ''
     }
   },
   computed: {
@@ -37,7 +36,7 @@ export default {
   },
   methods: {
     onLogin: function () {
-      API.user.login({ usernameOrEmail: this.username, password: this.password }).then((user) => {
+      API.user.login({ email: this.username, password: this.password }).then((user) => {
         // go back to the chat interface
         this.$router.push({ name: 'Chat' })
       })

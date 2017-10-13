@@ -1,12 +1,14 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+import '@/config/firebase'
 import Vue from 'vue'
+import VueFire from 'vuefire'
 import App from './App'
 import router from './router'
 import store from '@/config/vuex/store'
 import i18nConfig from '@/config/i18n'
 
+Vue.use(VueFire)
 Vue.config.productionTip = false
+Vue.config.devtools = true
 
 /* eslint-disable no-new */
 new Vue({

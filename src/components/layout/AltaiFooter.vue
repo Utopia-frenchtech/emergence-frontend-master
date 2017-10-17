@@ -16,17 +16,17 @@ export default {
       links: [{
         label: 'Utopia',
         link: 'http://utopia.french.tech',
-        external: true,
+        external: true
       }, {
         label: 'FirstOnes',
         link: 'http://dreamoffreedom.faith',
-        external: true,
+        external: true
       }, {
         label: this.$i18n.t('components.info.legalTerms.label'),
-        name: 'LegalTerms',
+        name: 'LegalTerms'
       }, {
         label: 'Contact',
-        link: 'mailto:contact@emergence.site',
+        link: 'mailto:contact@emergence.site'
       }
       ]
     }

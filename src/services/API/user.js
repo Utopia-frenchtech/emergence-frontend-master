@@ -23,11 +23,13 @@ export const user = {
    * without an account.
    * @return {*} [description]
    */
-  demo: () => (new Promise((resolve, reject) => {
-    localStorage.setItem('userId', randomId)
-    resolve({
-      id: randomId
-    })
+  demo: (e, usname) => (new Promise((resolve, reject) => {
+    // let user = e.filter(e => e['.key'] === usname)
+    console.log('ddd', e)
+    // localStorage.setItem('userId', randomId)
+    // resolve({
+    //   id: randomId
+    // })
   })),
   /**
    * Login, not that we should be able to provide either the username or email for login,
@@ -37,25 +39,25 @@ export const user = {
    * @return {*}          [description]
    */
   login: ({ email, password }) => (new Promise((resolve, reject) => {
-    var vm = this
+    // var vm = this
     // vm.auth.message = ''
     // vm.auth.hasErrors = false
-
-    if (email === '' || password === '') {
-      alert('Please provide the email and password')
-      return
-    }
-    console.log(email, password)
-    // Sign-in the user with the email and password
-    auth.signInWithEmailAndPassword(email, password)
-      .then(function (data) {
-        vm.auth.user = auth.currentUser
-      }).catch(function (error) {
-        console.log(error)
-        console.log(vm)
-        // vm.auth.message = error.message
-        // vm.auth.hasErrors = true
-      })
+    //
+    // if (email === '' || password === '') {
+    //   alert('Please provide the email and password')
+    //   return
+    // }
+    // console.log(email, password)
+    // // Sign-in the user with the email and password
+    // auth.signInWithEmailAndPassword(email, password)
+    //   .then(function (data) {
+    //     vm.auth.user = auth.currentUser
+    //   }).catch(function (error) {
+    //     console.log(error)
+    //     console.log(vm)
+    //     // vm.auth.message = error.message
+    //     // vm.auth.hasErrors = true
+    //   })
     const user = {
       id: randomId,
       name: faker.name.findName(),

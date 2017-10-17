@@ -29,7 +29,7 @@ export default {
   name: 'top-menu',
   components: {
     Level,
-    AltaiButton,
+    AltaiButton
   },
   data: function data () {
     return {

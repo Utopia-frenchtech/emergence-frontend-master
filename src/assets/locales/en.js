@@ -9,7 +9,7 @@ export default {
       zipCode: 'Zip Code',
       city: 'City',
       userName: `Username`,
-      password: 'Password',
+      password: 'Password'
     }
   },
   components: {
@@ -20,50 +20,50 @@ export default {
         label: 'Speak here:',
         button: 'Post',
         name: 'Your first name',
-        message: 'Your message',
-      },
+        message: 'Your message'
+      }
     },
     'info': {
       'legalTerms': {
-        label: 'Terms',
-      },
+        label: 'Terms'
+      }
     },
     'level': {
-      'level': 'Level',
+      'level': 'Level'
     },
     user: {
       login: {
         label: 'Login',
         alreadyMember: 'Already member ?',
-        button: 'Login',
+        button: 'Login'
       },
       account: {
         label: 'My account',
-        button: 'Update my data',
+        button: 'Update my data'
       },
       signup: {
         label: 'Signup',
         notYetMember: 'Not member yet?',
-        button: 'Signup',
+        button: 'Signup'
       },
       logout: {
         label: 'Logout',
         message: 'You are now logged out. See you soon!',
         button: 'Logout',
-        anotherAccount: 'Login with another account',
-      },
+        anotherAccount: 'Login with another account'
+      }
     },
     links: {
-      blogger: 'http://emergencealpha.blogspot.fr/',
+      blogger: 'http://emergencealpha.blogspot.fr/'
     },
     services: {
       api: {
         error: {
           title: 'Oops',
-          message: `An error has occured`,
-        },
-      },
-    },
+          message: `An error has occured`
+        }
+      }
+    }
   }
 
 }

@@ -21,7 +21,7 @@ export default {
       return [
         {
           name: 'Chat',
-          label: this.$i18n.t('components.chat.label'),
+          label: this.$i18n.t('components.chat.label')
         },
         {
           name: 'Login',
@@ -42,12 +42,12 @@ export default {
           name: 'Logout',
           label: this.$i18n.t('components.user.logout.label'),
           hidden: !this.isLoggedIn
-        },
+        }
       ]
     }
   },
   methods: {
-    ...mapMutations(['closeLeftMenu']),
+    ...mapMutations(['closeLeftMenu'])
   }
 }
 </script>

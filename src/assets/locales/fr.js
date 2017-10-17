@@ -9,7 +9,7 @@ export default {
       zipCode: 'Code postal',
       city: 'Ville',
       userName: `Nom d'utilisateur`,
-      password: 'Mot de passe',
+      password: 'Mot de passe'
     }
   },
   components: {
@@ -20,50 +20,50 @@ export default {
         label: 'Parle ici:',
         button: 'Poster',
         name: 'Ton prénom',
-        message: 'Ton message',
-      },
+        message: 'Ton message'
+      }
     },
     'info': {
       'legalTerms': {
-        label: 'Mentions légales',
-      },
+        label: 'Mentions légales'
+      }
     },
     'level': {
-      'level': 'Niveau',
+      'level': 'Niveau'
     },
     user: {
       login: {
         label: 'Connexion',
         alreadyMember: 'Déja membre ?',
-        button: 'Connexion',
+        button: 'Connexion'
       },
       account: {
         label: 'Mon Compte',
-        button: 'Mettre à jour les données',
+        button: 'Mettre à jour les données'
       },
       signup: {
         label: 'Inscription',
         notYetMember: 'Pas encore membre ?',
-        button: 'Inscription',
+        button: 'Inscription'
       },
       logout: {
         label: 'Déconnexion',
         message: 'Vous êtes bien déconnecté. A bientôt !',
         button: 'Déconnexion',
-        anotherAccount: 'Se connecter avec un autre compte',
-      },
-    },
+        anotherAccount: 'Se connecter avec un autre compte'
+      }
+    }
   },
   links: {
-    blogger: 'http://alphatestemergence.blogspot.fr/',
+    blogger: 'http://alphatestemergence.blogspot.fr/'
   },
   services: {
     api: {
       error: {
         title: 'Oups',
-        message: `Une erreur s'est produite`,
-      },
-    },
-  },
+        message: `Une erreur s'est produite`
+      }
+    }
+  }
 
 }

@@ -5,5 +5,5 @@ export default {
    * @return {*}     [description]
    */
   getJSONItem: (key) => JSON.parse(localStorage.getItem(key)),
-  setJSONItem: (key, object) => localStorage.setItem(key, JSON.stringify(object)),
+  setJSONItem: (key, object) => localStorage.setItem(key, JSON.stringify(object))
 }

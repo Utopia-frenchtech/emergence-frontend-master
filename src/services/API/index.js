@@ -15,5 +15,5 @@ import emergence from './emergence'
 export default {
   message,
   user,
-  emergence,
+  emergence
 }

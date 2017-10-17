@@ -21,7 +21,7 @@ export default {
   },
   computed: {
     humanizedDate: function () { return chatHelpers.humanizeDate(this.date) }
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>

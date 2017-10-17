@@ -33,12 +33,11 @@
     <div class="links">
       <router-link :to="{ name: 'Login'}">{{$t('components.user.login.alreadyMember')}}</router-link>
     </div>
-  </div>
 </form>
 </template>
 <script>
 import _ from 'lodash'
-import { mapState } from 'vuex'
+// import { mapState } from 'vuex'
 import AltaiButton from '@/components/ui/AltaiButton'
 import API from '@/services/API'
 export default {
@@ -55,7 +54,7 @@ export default {
       address: null,
       city: null,
       zipCode: null,
-      ...this.$store.state.user,
+      ...this.$store.state.user
     }
   },
   computed: {
@@ -71,7 +70,7 @@ export default {
         phone: user.phone || null,
         address: user.address || null,
         city: user.city || null,
-        zipCode: user.zipCode || null,
+        zipCode: user.zipCode || null
       }
     },
     newUser () {
@@ -82,7 +81,7 @@ export default {
         phone: this.phone,
         address: this.address,
         city: this.city,
-        zipCode: this.zipCode,
+        zipCode: this.zipCode
       }
     }
   },

@@ -18,6 +18,6 @@ moment.locale(currentLocale)
 export const i18nConfig = new VueI18n({
   locale: currentLocale,
   messages: locales,
-  fallbackLocale: 'en',
+  fallbackLocale: 'en'
 })
 export default i18nConfig

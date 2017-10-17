@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <layout>
-      {{user}}
       <router-view ></router-view>
     </layout>
   </div>
@@ -15,8 +14,13 @@ import 'font-awesome/css/font-awesome.min.css'
 import 'normalize.css'
 import 'toastr/build/toastr.min.css'
 // import localStorageHelpers from '@/helpers/localStorageHelpers'
-import API from '@/services/API'
-import {auth} from './config/firebase'
+// import API from '@/services/API'
+import {db} from '@/config/firebase'
+// import {auth} from './config/firebase'
+/**
+ * Requests related to the interface gamification, experience for example
+ */
+// import Axios from '@/services/API/Axios'
 import Layout from '@/components/layout/Layout'
 import { mapState } from 'vuex'
 export default {
@@ -27,33 +31,48 @@ export default {
   computed: {
     ...mapState(['user'])
   },
-  beforeCreate () {
-    auth.onAuthStateChanged((user) => {
-      // initially user = null, after auth it will be either <fb_user> or false
+  data () {
+    return {
 
-      const users = {
-        id: randomId,
-        name: user.email,
-        level: 0
-      }
-      this.$store.commit('updateUser', users || false)
-      if (user && this.$route.path === '/user/login') {
-        this.$router.replace('/')
-      } else if (!user && this.$route.path !== '/user/login') {
-        this.$router.replace('/user/login')
-      }
-    })
-  },
-  created: function () {
-    // get the userId if logged in or ask the server to provide a unique id for demo purpose
-    if (!localStorage.getItem('userId')) {
-      API.user.demo().then((randomId) => {
-        localStorage.setItem('userId', randomId)
-        this.$store.commit('updateUserId', randomId)
-      })
     }
-    // load route params
-    const { color } = this.$route.query
+  },
+  firebase: {
+    users: {
+      source: db.ref('users'),
+      // Optional, allows you to handle any errors.
+      cancelCallback (err) {
+        console.error(err)
+      }
+    }
+  },
+  methods: {
+    updateItem: function (item) {
+      // create a copy of the item
+      item = {...item}
+      // remove the .key attribute
+      delete item['.key']
+      this.$firebaseRefs.items.child(item['.key']).set(item)
+    }
+  },
+  mounted () {
+    const { color, usname } = this.$route.query
+    db.ref('users').child(usname).on('value', snapshot => {
+      const name = snapshot.val().usname
+      const users = {
+        id: usname,
+        name: name
+      }
+      this.$store.commit('updateUser', users)
+      this.loading = false
+    })
+    // get the userId if logged in or ask the server to provide a unique id for demo purpose
+//    if (!localStorage.getItem('userId')) {
+//      API.user.demo().then((randomId) => {
+//        console.log(randomId)
+//        localStorage.setItem('userId', randomId)
+//        this.$store.commit('updateUserId', randomId)
+//      })
+//    }
     if (color) this.$store.commit('updateColor', color)
   }
 }

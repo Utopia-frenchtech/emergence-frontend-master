@@ -19,7 +19,7 @@ export default {
 
     firebase: {
       users: {
-        source: db.ref('users'),
+        source: db.ref('users').child('-KvwATV6ziTEB5NSsliG'),
         // Optional, allows you to handle any errors.
         cancelCallback (err) {
           console.error(err)

@@ -31,7 +31,7 @@ export default {
     return {
       email: '',
       username: '',
-      password: '',
+      password: ''
     }
   },
   computed: {

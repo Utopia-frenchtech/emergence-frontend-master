@@ -23,10 +23,10 @@ export const message = {
           sender: {
             id: '-1',
             name: 'Altaï',
-            isBot: true,
+            isBot: true
           },
           content: faker.lorem.sentence(),
-          createAt: (new Date()).toISOString(),
+          createAt: (new Date()).toISOString()
         }
         )
     })
@@ -55,10 +55,10 @@ export const message = {
           sender: {
             id: '-1',
             name: 'Altaï',
-            isBot: true,
+            isBot: true
           },
           content: evt.data,
-          createAt: (new Date()).toISOstring(),
+          createAt: (new Date()).toISOstring()
         }
         resolve(altaiResponse)
       }
@@ -86,10 +86,10 @@ export const message = {
         sender: {
           id: '-1',
           name: 'Altaï',
-          isBot: true,
+          isBot: true
         },
         content: res.data,
-        createdAt: (new Date()).toISOString(),
+        createdAt: (new Date()).toISOString()
       }
     })
   },
@@ -107,7 +107,7 @@ export const message = {
   _get: ({ page, perPage }) => (
     Axios.get('/messages', {
       page,
-      perPage,
+      perPage
     })
   )
 }

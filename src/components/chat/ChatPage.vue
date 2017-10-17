@@ -39,7 +39,7 @@ export default {
     Message,
     MessageForm,
     DateSeparator,
-    Experience,
+    Experience
   },
   data: function () {
     return {
@@ -48,12 +48,12 @@ export default {
         {
           sender: {
             name: 'Altaï',
-            id: -1,
+            id: -1
           },
           content: this.$i18n.t('components.chat.firstMessage'),
-          createdAt: (new Date()).toISOString(),
-        },
-      ],
+          createdAt: (new Date()).toISOString()
+        }
+      ]
     }
   },
   computed: {
@@ -71,7 +71,7 @@ export default {
         return 0
       }) // sort by date, reversed
     },
-    ...mapState(['user', 'userId', 'exp']),
+    ...mapState(['user', 'userId', 'exp'])
   },
   updated: function () {
     // scroll to bottom when messages are updated
@@ -87,10 +87,10 @@ export default {
       const message = {
         sender: {
           id: this.userId, // NOTE : there should always be a unique ID, event for new users, due to ChatScript behaviour
-          name: name || this.user.name,
+          name: name || this.user.name
         },
         content: messageContent,
-        createdAt: (new Date()).toISOString(),
+        createdAt: (new Date()).toISOString()
       }
       // add user message
       this.messages = [...this.messages, message]
@@ -104,7 +104,7 @@ export default {
       })
       // update experience
       API.emergence.getExp()
-    },
+    }
   }
 }
 </script>

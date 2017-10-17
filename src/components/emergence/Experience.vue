@@ -19,7 +19,7 @@ export default {
   data: function data () {
     return {
       width: 500,
-      height: 20,
+      height: 20
     }
   },
   computed: {

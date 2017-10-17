@@ -42,5 +42,5 @@ export const humanizeTime = (date) => {
 export default {
   groupByDay,
   humanizeDate,
-  humanizeTime,
+  humanizeTime
 }

@@ -32,11 +32,11 @@ export default {
     TopMenu,
     LeftMenu,
     AltaiFooter,
-    SocialMediaBar,
+    SocialMediaBar
   },
   data: function data () {
     return {
-      showLeftMenu: false,
+      showLeftMenu: false
     }
   },
   computed: {

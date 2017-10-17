@@ -18,7 +18,7 @@ export const emergence = {
       const newExp = {
         current: exp % 100,
         total: 100,
-        level: Math.floor(exp / 100),
+        level: Math.floor(exp / 100)
       }
       localStorageHelpers.setJSONItem('exp', newExp)
       store.commit('updateExp', newExp)

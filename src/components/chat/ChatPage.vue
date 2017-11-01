@@ -14,7 +14,6 @@
     <div class="experience">
       <experience :total="exp.total" :current="exp.current"></experience>
     </div>
-  </form>
 </div>
 </template>
 

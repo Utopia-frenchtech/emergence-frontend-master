@@ -1,10 +1,11 @@
 <template>
   <div id="experience">
     <h2>Expérience</h2>
-    <svg :width="width" :viewBox="`0 0 ${width} ${height}`">
+    <svg :width="width" :viewBox="`0 0 ${width} ${height}`" >
       <rect :x="limit" y="0" width="2" v-if="current > 0 && current < total" ></rect>
       <exp-holder x="0" y="0" :width="width" :height="height"></exp-holder>
       <exp-bar :x="2" y="2" :width="limit" :height="height-4"></exp-bar>
+      <text x="47%" y="15" fill="red">{{current}}%</text>
     </svg>
   </div>
 </template>

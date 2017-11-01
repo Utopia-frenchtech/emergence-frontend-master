@@ -1,6 +1,5 @@
 <template>
   <form v-on:submit.prevent="onUpdate()" id="account" class="vertical big">
-    <!--{{$store.state.user}}-->
     <div class="flex">
       <div class="input-100">
         <input type="text" name="UserName"  v-model="username" :placeholder="$t('models.user.userName')" >

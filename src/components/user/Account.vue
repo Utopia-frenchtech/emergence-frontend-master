@@ -1,30 +1,33 @@
 <template>
-  <form v-on:submit.prevent="onUpdate" id="account" class="vertical big">
+  <form v-on:submit.prevent="onUpdate()" id="account" class="vertical big">
+    <!--{{$store.state.user}}-->
     <div class="flex">
-      <div>
-        <input type="text" name="firstName" v-model="firstName" :placeholder="$t('models.user.firstName')">
-      </div>
-      <div>
-        <input type="text" name="lastName" v-model="lastName" :placeholder="$t('models.user.lastName')">
+      <div class="input-100">
+        <input type="text" name="UserName"  v-model="username" :placeholder="$t('models.user.userName')" >
       </div>
     </div>
     <div class="flex">
       <div>
+        <input type="text" name="firstName"  v-model="firstname"  :placeholder="$t('models.user.firstName')">
+      </div>
+      <div>
+        <input type="text" name="lastName" v-model="lastname" :placeholder="$t('models.user.lastName')">
+      </div>
+    </div>
+    <div class="flex">
+      <div class="input-100">
         <input type="email" name="email" v-model="email" :placeholder="$t('models.user.email')">
       </div>
-      <div>
-        <input type="tel" name="phone" v-model="phone" :placeholder="$t('models.user.phone')">
-      </div>
-    </div>
-    <div class="">
-      <input class="full-width" type="text" name="address" v-model="address" :placeholder="$t('models.user.address')">
     </div>
     <div class="flex">
       <div>
-        <input type="text" name="zip-code" v-model="zipCode" :placeholder="$t('models.user.zipCode')">
+        <input type="checkbox" name="profile-game" v-model="profilgame" >
+        <label>{{$t('models.user.profileGame')}}</label>
       </div>
       <div>
-        <input type="text" name="city" v-model="city" :placeholder="$t('models.user.city')">
+
+        <input type="checkbox" name="profile-dev" v-model="profildev" >
+        <label>{{$t('models.user.profileDev')}}</label>
       </div>
     </div>
     <div class="button-wrapper">
@@ -37,7 +40,6 @@
 </template>
 <script>
 import _ from 'lodash'
-// import { mapState } from 'vuex'
 import AltaiButton from '@/components/ui/AltaiButton'
 import API from '@/services/API'
 export default {
@@ -47,13 +49,14 @@ export default {
   },
   data: function data () {
     return {
-      firstName: null,
-      lastName: null,
+      id: null,
+      username: null,
+      firstname: null,
+      lastname: null,
       email: null,
-      phone: null,
-      address: null,
-      city: null,
-      zipCode: null,
+      profilgame: false,
+      profildev: false,
+      checked: false,
       ...this.$store.state.user
     }
   },
@@ -64,44 +67,85 @@ export default {
     initialUser () {
       const user = this.$store.state.user
       return {
-        firstName: user.firstName || null,
-        lastName: user.lastName || null,
+        id: user.id || null,
+        username: user.username || null,
+        firstname: user.firstname || null,
+        lastname: user.lastname || null,
         email: user.email || null,
-        phone: user.phone || null,
-        address: user.address || null,
-        city: user.city || null,
-        zipCode: user.zipCode || null
+        profilgame: user.profilgame || false,
+        profildev: user.profildev || false
       }
     },
     newUser () {
       return {
-        firstName: this.firstName,
-        lastName: this.lastName,
+        id: this.id,
+        usname: this.username,
+        name: this.firstname,
+        lname: this.lastname,
         email: this.email,
-        phone: this.phone,
-        address: this.address,
-        city: this.city,
-        zipCode: this.zipCode
+        casej: this.profilgame,
+        casedev: this.profildev
       }
     }
   },
   methods: {
-    onUpdate: function () {
-      API.user.update(this.newUser).then((user) => {
+    onUpdate: function (e) {
+      API.user.update(this.newUser, this).then((user) => {
         // go back to the chat interface
         this.$router.push({ name: 'Chat' })
       })
     }
+  },
+  mounted () {
   }
 }
 </script>
 <style lang="scss">
 .flex{
+
   :first-child{
     margin-right: 8px;
   }
   :not(:first-child){
     margin-left: 8px;
+  }
+  .input-100{
+    width: 100%;
+    margin-right: inherit;
+    input {
+      width: 100%;
+    }
+
+  }
+  input[type=checkbox] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+
+  }
+  input[type=checkbox] {
+    -border-radius: 4px;
+    height: 30px;
+    width: 30px;
+    background: linear-gradient(70deg, rgba(#aaaaaa, 0.5), rgba(#999999, 0.5));
+    border: 1px solid #ccc;
+  }
+  input[type="checkbox"]:checked {
+    background: linear-gradient(70deg, rgba(#aaaaaa, 0.5), rgba(#999999, 0.5));
+    /*margin:0px;*/
+    position: relative;
+    &:before {
+      font-family: FontAwesome;
+      content: '\f00c';
+      display: block;
+      color: grey;
+      font-size: 13px;
+      position: absolute;
+    }
+  }
+  label {
+    position: relative;
+    bottom: 28px;
   }
 }
 </style>

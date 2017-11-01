@@ -56,15 +56,24 @@ export default {
   },
   mounted () {
     const { color, usname } = this.$route.query
-    db.ref('users').child(usname).on('value', snapshot => {
-      const name = snapshot.val().usname
-      const users = {
-        id: usname,
-        name: name
-      }
-      this.$store.commit('updateUser', users)
-      this.loading = false
-    })
+    if (usname) {
+      db.ref('users').child(usname).on('value', snapshot => {
+        const data = snapshot.val()
+        console.log(data)
+        const users = {
+          id: usname,
+          firstname: data.name,
+          lastname: data.lname,
+          username: data.usname,
+          email: data.email,
+          profilgame: data.casej,
+          profildev: data.casedev
+        }
+        this.$store.commit('updateUser', users)
+        this.loading = false
+      })
+    }
+
     // get the userId if logged in or ask the server to provide a unique id for demo purpose
 //    if (!localStorage.getItem('userId')) {
 //      API.user.demo().then((randomId) => {

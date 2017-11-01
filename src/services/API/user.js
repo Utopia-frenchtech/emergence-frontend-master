@@ -5,14 +5,13 @@
  * and email verification.
  */
 import Axios from './Axios'
-import faker from 'faker'
+// import faker from 'faker'
 import localStorageHelpers from '@/helpers/localStorageHelpers'
 import store from '@/config/vuex/store'
-import {auth} from '@/config/firebase'
-
+import {auth, db} from '@/config/firebase'
 // TODO : fake data while the backend is not ready
-const randomId = faker.random.uuid()
-const token = faker.random.uuid()
+// const randomId = faker.random.uuid()
+// const token = faker.random.uuid()
 
 export const user = {
   /**
@@ -39,36 +38,42 @@ export const user = {
    * @return {*}          [description]
    */
   login: ({ email, password }) => (new Promise((resolve, reject) => {
-    // var vm = this
-    // vm.auth.message = ''
-    // vm.auth.hasErrors = false
-    //
-    // if (email === '' || password === '') {
-    //   alert('Please provide the email and password')
-    //   return
+    auth.signInWithEmailAndPassword(email, password)
+      .then(function (data) {
+        db.ref('users').orderByChild('email').equalTo(data.email).on('value', snapshot => {
+          snapshot.forEach(function (profile) {
+            const users = {
+              id: profile.key,
+              firstname: profile.val().name,
+              lastname: profile.val().lname,
+              username: profile.val().usname,
+              email: profile.val().email,
+              profilgame: profile.val().casej,
+              profildev: profile.val().casedev
+            }
+            store.commit('updateUser', users)
+            localStorageHelpers.setJSONItem('user', users)
+            resolve(users)
+          })
+        })
+      }).catch(function (error) {
+        reject(error.message)
+        // console.log(error.code)
+        // console.log(vm)
+        // vm.auth.message = error.message
+        // vm.auth.hasErrors = true
+      })
+    // const user = {
+    //   id: randomId,
+    //   name: faker.name.findName(),
+    //   level: 0
     // }
-    // console.log(email, password)
-    // // Sign-in the user with the email and password
-    // auth.signInWithEmailAndPassword(email, password)
-    //   .then(function (data) {
-    //     vm.auth.user = auth.currentUser
-    //   }).catch(function (error) {
-    //     console.log(error)
-    //     console.log(vm)
-    //     // vm.auth.message = error.message
-    //     // vm.auth.hasErrors = true
-    //   })
-    const user = {
-      id: randomId,
-      name: faker.name.findName(),
-      level: 0
-    }
-    // we memorize user data throughout the app
-    localStorageHelpers.setJSONItem('user', user)
-    localStorage.setItem('userId', user.id)
-    localStorage.setItem('token', token)
-    store.commit('updateUser', user)
-    resolve(user)
+    // // we memorize user data throughout the app
+    // localStorageHelpers.setJSONItem('user', user)
+    // localStorage.setItem('userId', user.id)
+    // localStorage.setItem('token', token)
+    // store.commit('updateUser', user)
+    // resolve(user)
   })),
   /**
    * Signup
@@ -76,34 +81,39 @@ export const user = {
    * @return {*}      [description]
    */
   signup: (user) => (new Promise((resolve, reject) => {
-    // we login the user too
-    let vm = this
-    // console.log(vm.auth.user)
-    // auth.createu({
-    //   email: 'user@example.com',
-    //   emailVerified: false,
-    //   phoneNumber: '+11234567890',
-    //   password: 'secretPassword',
-    //   displayName: 'John Doe',
-    //   photoURL: 'http://www.example.com/12345678/photo.png',
-    //   disabled: false})
-
     auth.createUserWithEmailAndPassword(user.email, user.password)
       .then(function (data) {
-        const user = {
-          id: randomId,
-          name: auth.currentUser.email,
-          level: 0
+        console.log(data.uid)
+        var users = auth.currentUser
+        if (users != null) {
+          users.providerData.forEach(function (profile) {
+            // resolve(user)
+            db.ref('users').push({
+              uid: data.uid,
+              usname: user.name,
+              email: profile.email,
+              casej: false,
+              casedev: false
+            })
+            const usersdata = {
+              id: data.uid,
+              firstname: '',
+              lastname: '',
+              username: user.name,
+              email: profile.emaill,
+              profilgame: false,
+              profildev: false
+            }
+            // user.id = randomId
+            localStorageHelpers.setJSONItem('user', user)
+            // localStorage.setItem('userId', randomId)
+            // localStorage.setItem('token', token)
+            store.commit('updateUser', usersdata)
+            resolve(user)
+          })
         }
-        user.id = randomId
-        localStorageHelpers.setJSONItem('user', user)
-        localStorage.setItem('userId', randomId)
-        localStorage.setItem('token', token)
-        store.commit('updateUser', user)
-        resolve(user)
       }).catch(function (error) {
-        vm.auth.message = error.message
-        vm.auth.hasErrors = true
+        reject(error.message)
       })
   })),
   /**
@@ -111,12 +121,17 @@ export const user = {
    * @param  {*} user [description]
    * @return {*}      [description]
    */
-  update: (user) => (new Promise((resolve, reject) => {
+  update: (user, $this) => (new Promise((resolve, reject) => {
     // thats an update so we conserve existing values when it makes sense
-    const currentUser = localStorageHelpers.getJSONItem('user', user)
-    localStorageHelpers.setJSONItem('user', { ...currentUser, ...user })
-    store.commit('updateUser', { ...currentUser, ...user })
-    resolve({ ...currentUser, ...user })
+    const id = user.id
+    delete user['id']
+    console.log(user)
+
+    db.ref('users').child(id).set(user)
+    // const currentUser = localStorageHelpers.getJSONItem('user', user)
+    // localStorageHelpers.setJSONItem('user', { ...currentUser, ...user })
+    // store.commit('updateUser', { ...currentUser, ...user })
+    // resolve({ ...currentUser, ...user })
   })),
   /**
    * Logout.
@@ -126,6 +141,7 @@ export const user = {
    */
   logout: () => (new Promise((resolve, reject) => {
     localStorage.clear()
+    auth.signOut()
     store.commit('clearUser')
     resolve()
   })),

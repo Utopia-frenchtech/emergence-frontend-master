@@ -9,7 +9,9 @@ export default {
       zipCode: 'Code postal',
       city: 'Ville',
       userName: `Nom d'utilisateur`,
-      password: 'Mot de passe'
+      password: 'Mot de passe',
+      profileGame: 'Profil joueur',
+      profileDev: 'Profil Développeur'
     }
   },
   components: {

@@ -11,7 +11,8 @@ export default {
       userName: `Nom d'utilisateur`,
       password: 'Mot de passe',
       profileGame: 'Profil joueur',
-      profileDev: 'Profil Développeur'
+      profileDev: 'Profil Développeur',
+      changepassword: 'Mot de passe bien changer'
     }
   },
   components: {

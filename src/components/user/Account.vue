@@ -1,5 +1,9 @@
 <template>
-  <form v-on:submit.prevent="onUpdate()" id="account" class="vertical big">
+  <form v-on:submit.prevent="onUpdate($event)" id="account" class="vertical big">
+    <div class="flex2">
+    <div class="input-100" style="color: red" v-if="invalide">{{message}}</div>
+    <div  style="color: green; height: 20px" v-if="valide">{{$t('models.user.changepassword')}}</div>
+    </div>
     <div class="flex">
       <div class="input-100">
         <input type="text" name="UserName"  v-model="username" :placeholder="$t('models.user.userName')" >
@@ -16,6 +20,11 @@
     <div class="flex">
       <div class="input-100">
         <input type="email" name="email" v-model="email" :placeholder="$t('models.user.email')">
+      </div>
+    </div>
+    <div class="flex">
+      <div class="input-100">
+        <input type="password" name="password" v-model="password" :placeholder="$t('models.user.password')">
       </div>
     </div>
     <div class="flex">
@@ -41,6 +50,7 @@
 import _ from 'lodash'
 import AltaiButton from '@/components/ui/AltaiButton'
 import API from '@/services/API'
+// import firebase from 'firebase'
 export default {
   name: 'account',
   components: {
@@ -56,6 +66,10 @@ export default {
       profilgame: false,
       profildev: false,
       checked: false,
+      password: '',
+      message: '',
+      invalide: false,
+      valide: false,
       ...this.$store.state.user
     }
   },
@@ -83,15 +97,21 @@ export default {
         lname: this.lastname,
         email: this.email,
         casej: this.profilgame,
-        casedev: this.profildev
+        casedev: this.profildev,
+        password: this.password
       }
     }
   },
   methods: {
     onUpdate: function (e) {
+      let $this = this
       API.user.update(this.newUser, this).then((user) => {
         // go back to the chat interface
         this.$router.push({ name: 'Chat' })
+      }).catch(function (error) {
+        $this.invalide = true
+        $this.message = error
+        console.log(error)
       })
     }
   },
@@ -146,5 +166,10 @@ export default {
     position: relative;
     bottom: 28px;
   }
+
+}
+.flex2{
+  margin-top: 65px
+
 }
 </style>

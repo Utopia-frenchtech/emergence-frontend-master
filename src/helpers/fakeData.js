@@ -8,5 +8,13 @@ export default {
       id: (options && options.id) || faker.random.uuid(),
       name: faker.name.firstName() + ' ' + faker.name.lastName()
     }
-  })
+  }),
+  shop: {
+    category: () => ({
+      id: faker.random.uuid(),
+      title: faker.hacker.noun(),
+      bgColor: faker.internet.color(),
+      icon: faker.image.abstract(32, 32)
+    })
+  }
 }

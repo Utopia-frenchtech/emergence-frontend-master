@@ -11,9 +11,11 @@
 import message from './message'
 import user from './user'
 import emergence from './emergence'
+import shop from './shop'
 
 export default {
   message,
   user,
-  emergence
+  emergence,
+  shop
 }

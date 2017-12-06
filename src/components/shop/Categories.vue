@@ -1,18 +1,20 @@
 <template>
-<div>
+<div class="shop-categories">
     <h1>{{$t('components.shop.categories.welcome.title')}}</h1>
     <p>{{$t('components.shop.categories.welcome.message')}}</p>
     <div>
-        <ul>
-            <li v-for="category in categories" :key="category.title">
-                <div>
-                    <img :src="category.icon" :alt="category.name + 'icon'"/>
-                </div>
-                <div :style="{
+        <ul class="categories">
+            <li class="category" v-for="category in categories" :key="category.title"
+            :style="{
                     backgroundColor: category.bgColor,
-                }">
-                    {{category.name}}
-                </div>
+                }"
+            >
+            <div class="category__icon-wrapper">
+                    <img :src="category.icon" :alt="category.name + 'icon'"/>
+            </div>
+            <div class="category__title">
+                    {{category.title}}
+            </div>
             </li>
         </ul>
 
@@ -21,16 +23,53 @@
 </template>
 
 <script>
+import API from '@/services/API'
 /**
  * Home page of the shop
  */
 export default {
+    created(){
+        API.shop.getCategories().then(categories => {
+            this.categories = categories
+        })
+    },
     data(){ return {
         categories:[],
     }}
 }
 </script>
 
-<style>
+<style lang="scss">
+.shop-categories{
+    .categories{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap:wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .category{
+        flex-basis: calc(50% - 8px);
+        flex-shrink: 0;
+        margin: 4px 0px;
+        color: #ffffff;
+        text-align: center;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        &__title{
+            flex-grow: 1;
+            line-height: 32px;
+            height: 32px;
+            font-size: 24px;
+        }   
+        &__icon-wrapper{
+            padding: 4px 8px;
+        }
+    }
+}
 
 </style>

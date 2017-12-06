@@ -54,6 +54,14 @@ export default {
         message: 'You are now logged out. See you soon!',
         button: 'Logout',
         anotherAccount: 'Login with another account'
+      },
+      shop: {
+        categories: {
+          welcome: {
+            title: 'Welcome to the Emergence service shop!',
+            message: 'New features, new knowledge for your AI!\nPut everything you want in the basket, it does not cost anything, and it makes the Beta progress…'
+          }
+        }
       }
     },
     links: {

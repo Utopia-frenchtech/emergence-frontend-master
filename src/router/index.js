@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import shopRoutes from './shop'
 import ChatPage from '@/components/chat/ChatPage'
 import UserPage from '@/components/user/UserPage'
 import Login from '@/components/user/Login'
@@ -55,9 +56,9 @@ const routes = [
     path: '/legal-terms',
     component: LegalTerms
   }, {
-    name: 'Shop',
     path: '/shop',
-    component: Shop
+    component: Shop,
+    children: shopRoutes
   }
 ]
 

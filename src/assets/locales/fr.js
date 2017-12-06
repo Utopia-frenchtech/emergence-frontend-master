@@ -55,6 +55,15 @@ export default {
         button: 'Déconnexion',
         anotherAccount: 'Se connecter avec un autre compte'
       }
+    },
+
+    shop: {
+      categories: {
+        welcome: {
+          title: 'Bienvenue dans le shop de services Emergence !',
+          message: 'De nouvelles fonctionnalités, de nouvelles connaissances pour votre IA !\nMettez tout ce que vous voulez dans le panier,  ça ne coûte rien, et ça fait avancer la Bêta…'
+        }
+      }
     }
   },
   links: {

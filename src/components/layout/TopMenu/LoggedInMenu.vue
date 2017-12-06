@@ -1,7 +1,9 @@
 <template>
       <div class="logged-in-menu">
           <div class="buttons">
+        <router-link :to="{ name: 'Shop'}">
               <altai-button isRound>Shop</altai-button>
+        </router-link>
           </div>
         <div class="">
           {{user.username}}

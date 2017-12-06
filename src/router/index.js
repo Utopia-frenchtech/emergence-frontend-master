@@ -8,6 +8,7 @@ import Logout from '@/components/user/Logout'
 import Account from '@/components/user/Account'
 import LegalTerms from '@/components/info/LegalTerms'
 import TestPage from '@/components/test/test'
+import Shop from '@/components/shop/Shop'
 
 Vue.use(Router)
 
@@ -53,6 +54,10 @@ const routes = [
     name: 'LegalTerms',
     path: '/legal-terms',
     component: LegalTerms
+  }, {
+    name: 'Shop',
+    path: '/shop',
+    component: Shop
   }
 ]
 

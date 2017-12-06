@@ -20,7 +20,7 @@
 
 <script>
 // @see https://vuejs.org/v2/guide/components.html#Content-Distribution-with-Slots
-import TopMenu from './TopMenu.vue'
+import TopMenu from './TopMenu'
 import LeftMenu from './LeftMenu.vue'
 import AltaiFooter from './AltaiFooter.vue'
 import SocialMediaBar from './SocialMediaBar.vue'

@@ -27,7 +27,7 @@ describe('helpers/chatHelpers', () => {
     const messages = [d1, d2, d3]
     expect(chatHelpers.groupByDay(messages)).to.deep.equal({
       [moment(d3.createdAt).startOf('day').toISOString()]: [d3],
-      [moment(d1.createdAt).startOf('day').toISOString()]: [d1, d2],
+      [moment(d1.createdAt).startOf('day').toISOString()]: [d1, d2]
     })
   })
 })

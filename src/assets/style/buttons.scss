@@ -1,0 +1,26 @@
+button{
+    &:hover{
+        cursor: pointer;
+    }
+}
+.btn{
+    // reset
+    padding: 0px;
+    margin: 0px;
+    background-color: transparent;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    &:hover{
+      cursor: pointer;
+    }
+    &:active{
+      transform: translate(1px, 1px)
+    }
+    &:disabled{
+      cursor: not-allowed;
+    }
+}
+.btn--zooming{
+    &:hover{
+      transform: scale(1.05);
+    }
+}

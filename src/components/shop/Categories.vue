@@ -4,8 +4,9 @@
     <p>{{$t('components.shop.categories.welcome.message')}}</p>
     <div>
         <ul class="categories">
-            <li class="btn category" v-for="category in categories" :key="category.title"
+            <li class="btn btn--zooming category" v-for="category in categories" :key="category.title"
             >
+            <router-link :to="{name: 'ShopCategory', params:{categoryId: category.id}}">
             <button class="category__button"
             :style="{
                     backgroundColor: category.bgColor,
@@ -18,6 +19,7 @@
                     {{category.title}}
             </div>
             </button>
+            </router-link>
             </li>
         </ul>
 

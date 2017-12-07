@@ -7,7 +7,13 @@ export const shop = {
     return new Promise((resolve, reject) => {
       resolve(Array(6).fill().map(fakeData.shop.category))
     })
-  }
+  },
+  getCategory: (categoryId) => new Promise((resolve, reject) => {
+    resolve(fakeData.shop.category)
+  }),
+  getItems: (categoryId) => new Promise((resolve, reject) => {
+    resolve(Array(12).fill().map(fakeData.shop.item))
+  })
 }
 
 export default shop

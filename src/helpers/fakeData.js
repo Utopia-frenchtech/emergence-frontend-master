@@ -15,6 +15,14 @@ export default {
       title: faker.hacker.noun(),
       bgColor: faker.internet.color(),
       icon: faker.image.abstract(32, 32)
+    }),
+    item: () => ({
+      id: faker.random.uuid(),
+      categoryId: faker.random.uuid(),
+      title: faker.hacker.noun(),
+      shortDescription: faker.lorem.paragraph(),
+      longDescription: faker.lorem.paragraphs(5),
+      icon: faker.image.fashion(32, 32)
     })
   }
 }

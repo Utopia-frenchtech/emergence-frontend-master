@@ -1,5 +1,5 @@
 <template>
-  <button class="altai-button" :class="{'altai-button--round': isRound}">
+  <button class="altai-button" :class="{'altai-button--round': isRound, 'altai-button--flat': isFlat}">
       <slot></slot>
   </button>
 </template>
@@ -9,7 +9,11 @@ export default {
   props:{
     isRound: {
       type: Boolean,
-      default: false
+      default: false,
+      },
+      isFlat:{
+        type: Boolean,
+        default: false,
       }
   },
   data: function data () {
@@ -27,13 +31,6 @@ export default {
     padding: 12px 24px;
     text-transform: uppercase;
     transition: background-color 0.3s, color 0.3s;
-    &--round{
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      padding: 0px;
-      text-align: center;
-    }
     &:hover{
       cursor: pointer;
       transform: scale(1.1);
@@ -45,6 +42,20 @@ export default {
       background-color: #989aa1;
       color: #6f7175;
       cursor: not-allowed;
+    }
+    &--round{
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      padding: 0px;
+      text-align: center;
+    }
+    &--flat{
+      padding: 0px;
+      background-color: transparent;
+      &:disabled{
+        background-color: transparent;
+      }
     }
 }
 </style>

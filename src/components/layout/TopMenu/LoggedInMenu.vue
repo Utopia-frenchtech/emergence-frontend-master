@@ -1,9 +1,7 @@
 <template>
       <div class="logged-in-menu">
           <div class="buttons">
-        <router-link :to="{ name: 'Shop'}">
-              <altai-button isRound>Shop</altai-button>
-        </router-link>
+              <ShopTopButton/>
           </div>
         <div class="">
           {{user.username}}
@@ -16,12 +14,12 @@
 
 <script>
 import Level from '@/components/emergence/Level'
-import AltaiButton from '@/components/ui/AltaiButton'
+import ShopTopButton from '@/components/shop/TopButton'
 export default {
     name:'logged-in-menu',
     components:{
         Level,
-        AltaiButton
+        ShopTopButton,
     },
     props: {
         user: {

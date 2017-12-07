@@ -1,5 +1,5 @@
 <template>
-  <button class="altai-button" :class="{round: isRound}">
+  <button class="altai-button" :class="{'altai-button--round': isRound}">
       <slot></slot>
   </button>
 </template>
@@ -27,7 +27,7 @@ export default {
     padding: 12px 24px;
     text-transform: uppercase;
     transition: background-color 0.3s, color 0.3s;
-    &.round{
+    &--round{
       width: 40px;
       height: 40px;
       border-radius: 50%;

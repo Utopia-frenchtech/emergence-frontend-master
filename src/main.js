@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import store from '@/config/vuex/store'
 import i18nConfig from '@/config/i18n'
+import globalComponents from '@/config/globalComponents'
 
 Vue.use(VueFire)
 Vue.config.productionTip = false

@@ -19,6 +19,7 @@ export default {
         color: $white;
     }
     .content{
+        padding: 16px 8px;
         background-color: $greyLight;
     }
 }

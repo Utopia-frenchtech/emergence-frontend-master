@@ -68,6 +68,8 @@ export default {
 }
 </script>
 <style lang="scss">
+$maxWidth: 960px;
+$minSideMargin: 64px;
 #layout{
   min-height: 600px;
   height: 100vh;
@@ -82,8 +84,9 @@ export default {
     display:flex;
     flex-direction: column;
     height: 100%;
+    max-width: $maxWidth;
     width: 100%;
-    max-width: 800px;
+    width: calc(100% - $minSideMargin);
   }
   main {
     height: 100%;

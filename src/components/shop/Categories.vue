@@ -4,7 +4,9 @@
     <p>{{$t('components.shop.categories.welcome.message')}}</p>
     <div>
         <ul class="categories">
-            <li class="category" v-for="category in categories" :key="category.title"
+            <li class="btn category" v-for="category in categories" :key="category.title"
+            >
+            <button class="category__button"
             :style="{
                     backgroundColor: category.bgColor,
                 }"
@@ -15,6 +17,7 @@
             <div class="category__title">
                     {{category.title}}
             </div>
+            </button>
             </li>
         </ul>
 
@@ -24,10 +27,14 @@
 
 <script>
 import API from '@/services/API'
+import AltaiButton from '@/components/ui/AltaiButton'
 /**
  * Home page of the shop
  */
 export default {
+    components:{
+        AltaiButton,
+    },
     created(){
         API.shop.getCategories().then(categories => {
             this.categories = categories
@@ -44,7 +51,7 @@ export default {
     .categories{
         list-style-type: none;
         margin: 0;
-        padding: 0;
+        padding: 0px 12px;
         display: flex;
         flex-direction: row;
         flex-wrap:wrap;
@@ -55,11 +62,15 @@ export default {
         flex-basis: calc(50% - 8px);
         flex-shrink: 0;
         margin: 4px 0px;
+        &__button{
         color: #ffffff;
         text-align: center;
         text-transform: uppercase;
         display: flex;
         align-items: center;
+        width: 100%;
+        height: 100%;
+        }
         &__title{
             flex-grow: 1;
             line-height: 32px;

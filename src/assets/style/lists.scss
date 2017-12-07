@@ -7,3 +7,9 @@ ul{
         }
     }
 }
+
+.list{
+    &--no-style{
+        list-style-type: none;
+    }
+}

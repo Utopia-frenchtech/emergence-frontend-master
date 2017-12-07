@@ -9,10 +9,13 @@ export const shop = {
     })
   },
   getCategory: (categoryId) => new Promise((resolve, reject) => {
-    resolve(fakeData.shop.category)
+    resolve(fakeData.shop.category())
   }),
   getItems: (categoryId) => new Promise((resolve, reject) => {
     resolve(Array(12).fill().map(fakeData.shop.item))
+  }),
+  getItem: (itemId) => new Promise((resolve, reject) => {
+    resolve(fakeData.shop.item())
   })
 }
 

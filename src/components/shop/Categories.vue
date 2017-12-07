@@ -3,7 +3,7 @@
     <h1>{{$t('components.shop.categories.welcome.title')}}</h1>
     <p>{{$t('components.shop.categories.welcome.message')}}</p>
     <div>
-        <ul class="categories">
+        <ul class="categories list--no-style">
             <li class="btn btn--zooming category" v-for="category in categories" :key="category.title"
             >
             <router-link :to="{name: 'ShopCategory', params:{categoryId: category.id}}">
@@ -51,7 +51,6 @@ export default {
 <style lang="scss">
 .shop-categories{
     .categories{
-        list-style-type: none;
         margin: 0;
         padding: 0px 12px;
         display: flex;

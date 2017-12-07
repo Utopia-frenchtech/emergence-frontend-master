@@ -1,6 +1,6 @@
 <template>
         <router-link :to="{ name: 'Shop'}">
-              <altai-button class="shop-button" isRound>
+              <altai-button class="shop-button" title="Shop" isRound>
                   <img :src="shopIcon" class="shop-button__icon"/>
                   </altai-button>
         </router-link>

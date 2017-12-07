@@ -1,19 +1,29 @@
 <template>
 <div class="shop-items">
-    <ul>
-        <li v-for="item in items" :key="item.id">
-            <div>
-            <img :src="item.icon" :alt="item.title">
-            <h2>
-            {{item.title}}
-            </h2>
-            <p>
-            {{item.shortDescription}}
-            </p>
-            </div>
-            <div>
+    <ul class="items list--no-style">
+        <li v-for="item in items" class="item" :key="item.id">
+            <router-link 
+            :to="{name:'ShopItem', params:{itemId: item.id}}"
+            tag="div"
+            class="btn btn--zooming item__description-block"
+            >
+                <div class="item__image-wrapper">
+                    <img :src="item.icon" :alt="item.title">
+                </div>
+                <div>
+                    <h2>
+                     {{item.title}}
+                     </h2>
+                      <p>
+                       {{item.shortDescription}}
+                   </p>
+                </div>
+            </router-link>
+            <div class="item__price price">
+                <div class="price__value">
                 {{item.price}}
-                <button>Add</button>
+                </div>
+                <button class="price__button">Add</button>
             </div>
         </li>
     </ul>
@@ -38,6 +48,17 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+.shop-items{
+    .items{
+    }
+    .item{
+        display: flex;
+        &__description-block{
+            display: flex;
+        }
+
+    }
+}
 
 </style>

@@ -20,7 +20,14 @@
 import API from '@/services/API'
 export default {
     created(){
-        API.shop.getItem(this.$route.params.itemId).then(item => this.item = item)
+        API.shop.getItem(this.itemId).then(item => this.item = item)
+    },
+    props:{
+        itemId: {
+            type: String,
+            required: true,
+        }
+
     },
     data(){return {
         item: {

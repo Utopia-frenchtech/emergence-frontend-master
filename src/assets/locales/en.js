@@ -61,6 +61,21 @@ export default {
             title: 'Welcome to the Emergence service shop!',
             message: 'New features, new knowledge for your AI!\nPut everything you want in the basket, it does not cost anything, and it makes the Beta progress…'
           }
+        },
+        thanksMessage: {
+          topTitle: 'My list of services',
+          title: 'Thanks for wanting this great feature',
+          description: 'Stay informed, check the newsletter.\nThese services are not implemented for Beta :o(\nBut we are working on it :o)\n',
+          leave: 'Leave the shop',
+          continue: 'Continue shopping'
+        },
+        cart: {
+          cart: 'cart',
+          add: 'Add item',
+          addToCart: '@:components.shop.add to @:components.shop.cart',
+          remove: 'Remove item',
+          removeFrom: '@:components.shop.remove from @:components.shop.cart',
+          empty: 'Remove all items'
         }
       }
     },

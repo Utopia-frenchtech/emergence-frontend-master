@@ -2,6 +2,8 @@
  * Requests related to the interface gamification, experience for example
  */
 import fakeData from '@/helpers/fakeData'
+import store from '@/config/vuex/store'
+
 export const shop = {
   getCategories: () => {
     return new Promise((resolve, reject) => {
@@ -16,6 +18,18 @@ export const shop = {
   }),
   getItem: (itemId) => new Promise((resolve, reject) => {
     resolve(fakeData.shop.item())
+  }),
+  addItem: (item) => new Promise((resolve, reject) => {
+    store.commit('addItemToCart', item)
+    resolve()
+  }),
+  removeItem: (item) => new Promise((resolve, reject) => {
+    store.commit('removeItemFromCart', item)
+    resolve()
+  }),
+  emptyCart: () => new Promise((resolve, reject) => {
+    store.commit('emptyCart')
+    resolve()
   })
 }
 

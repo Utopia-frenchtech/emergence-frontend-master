@@ -124,7 +124,6 @@ export const user = {
               profildev: false
             }
             // user.id = randomId
-            localStorageHelpers.setJSONItem('user', user)
             /* ancien code */
             // localStorage.setItem('userId', randomId)
             // localStorage.setItem('token', token)

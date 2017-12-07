@@ -23,7 +23,10 @@
                 <div class="price__value">
                 {{item.price}}
                 </div>
-                <button class="price__button">Add</button>
+                <button 
+                class="price__button"
+                @click="addItem(item)"
+                >{{$t('components.shop.cart.add')}}</button>
             </div>
         </li>
     </ul>
@@ -36,15 +39,27 @@ import API from '@/services/API'
 import AltaiButton from '@/components/ui/AltaiButton'
 export default {
     created(){
-        API.shop.getCategory(this.$route.params.categoryId).then(category => this.category = category)
-        API.shop.getItems(this.$route.params.categoryId).then(items => this.items = items)
+        API.shop.getCategory(this.categoryId).then(category => this.category = category)
+        API.shop.getItems(this.categoryId).then(items => this.items = items)
+    },
+    props:{
+        categoryId:{
+            type: String,
+            required: true,
+        }
     },
     data(){return{
         items:[],
         category: {
             title: "Loading...",
         }
-    }}
+    }},
+    methods:{
+        addItem(item) { 
+            API.shop.addItem(item)
+            this.$router.push({name:'ShopThanksMessage', queries:{categoryId: this.category.id}})
+        }
+    }
 }
 </script>
 

@@ -53,6 +53,7 @@ export default {
     &--flat{
       padding: 0px;
       background-color: transparent;
+      height: auto;
       &:disabled{
         background-color: transparent;
       }

@@ -3,6 +3,7 @@ import ItemsList from '@/components/shop/ItemsList'
 import Item from '@/components/shop/Item'
 import ThanksMessage from '@/components/shop/ThanksMessage'
 import TopBar from '@/components/shop/TopBar'
+import i18n from '@/config/i18n'
 
 const shopRoutes = [
   {
@@ -13,7 +14,7 @@ const shopRoutes = [
       top: TopBar
     },
     props: {
-      top: (route) => ({title: 'BARFOO'})
+      top: (route) => ({title: i18n.t('components.shop.categories.topbar')})
     }
   }, {
     name: 'ShopCategory',
@@ -24,7 +25,7 @@ const shopRoutes = [
     },
     props: {
       content: (route) => ({ categoryId: route.params.categoryId }),
-      top: (route) => ({ title: 'FOOBAR' })
+      top: (route) => ({ categoryId: route.params.categoryId })
     }
   }, {
     name: 'ShopItem',
@@ -35,7 +36,7 @@ const shopRoutes = [
     },
     props: {
       content: (route) => ({ itemId: route.params.itemId }),
-      top: (route) => ({ title: 'FOOBAR' })
+      top: (route) => ({ itemId: route.params.itemId })
     }
   }, {
     name: 'ShopThanksMessage',
@@ -46,7 +47,7 @@ const shopRoutes = [
     },
     props: {
       content: (route) => ({ itemId: route.query.itemId, categoryId: route.query.categoryId }),
-      top: (route) => ({ title: 'FOOBAR' })
+      top: (route) => ({ title: i18n.t('components.shop.thanksMessage.topbar')})
     }
   }
 ]

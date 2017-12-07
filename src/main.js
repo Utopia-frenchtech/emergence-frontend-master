@@ -12,7 +12,7 @@ Vue.config.productionTip = false
 Vue.config.devtools = true
 
 /* eslint-disable no-new */
-new Vue({
+export default new Vue({
   el: '#app',
   router,
   store,

@@ -1,7 +1,7 @@
 <template>
-<div>Shop
-    <router-view name="top"></router-view>
-    <router-view name="content"></router-view>
+<div class="shop">
+    <router-view class="topbar" name="top"></router-view>
+    <router-view class="content" name="content"></router-view>
 </div>
 </template>
 
@@ -11,6 +11,16 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import '~@/assets/style/variables/colors';
+.shop{
+    .topbar{
+        background-color: $greyDark;
+        color: $white;
+    }
+    .content{
+        background-color: $greyLight;
+    }
+}
 
 </style>

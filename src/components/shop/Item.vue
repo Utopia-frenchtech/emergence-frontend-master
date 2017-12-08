@@ -12,8 +12,7 @@
                     <h2 class="item__title">
                      {{item.title}}
                      </h2>
-                      <p class="item__description">
-                       {{item.shortDescription}}
+                      <p class="item__description" v-for="t in item.shortDescription.split('\n')">{{t}}</p>
                    </p>
                 </div>
 </router-link>

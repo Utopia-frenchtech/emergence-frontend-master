@@ -2,7 +2,7 @@
 <div class="shop-item-page">
     <item class="item__summary" :item="item" :allowAdd="true" :onAdd="addItem" />
     <div class="item__long-description">
-        {{item.longDescription}}
+        <p v-for="t in item.longDescription.split('\n')">{{t}}</p>
     </div>
 </div>
   
@@ -29,6 +29,9 @@ export default {
     data(){return {
         item: {
             title: "Loading...",
+            longDescription: 'Loading...',
+            shortDescription: 'Loading...',
+            description: 'Loading'
         }
     }},
     methods:{

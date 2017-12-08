@@ -5,7 +5,10 @@ import App from './App'
 import router from './router'
 import store from '@/config/vuex/store'
 import i18nConfig from '@/config/i18n'
+// MUST STAY HERE EVEN IF UNUSED
+// this loads the globalComponents
 import globalComponents from '@/config/globalComponents'
+import filters from '@/filters'
 
 Vue.use(VueFire)
 Vue.config.productionTip = false
@@ -18,5 +21,6 @@ export default new Vue({
   store,
   i18n: i18nConfig,
   template: '<App/>',
-  components: { App }
+  components: { App },
+  filters
 })

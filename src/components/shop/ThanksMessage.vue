@@ -1,7 +1,11 @@
 <template>
-  <div>
+  <div class="shop-thanks-message">
       <h1>{{$t('components.shop.thanksMessage.title')}}</h1>
-      <p>{{$t('components.shop.thanksMessage.description')}}</p>
+      <div class="thanks-message__description">
+      <p v-for="t in $t('components.shop.thanksMessage.description').split('\n')">
+          {{t}}
+      </p>
+      </div>
       <item v-if="item" :item="item" :allowAdd="false" :allowRemove="false"/>
       <p>
           <router-link :to="lastVisited">
@@ -62,6 +66,14 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+.shop-thanks-message{
+    .thanks-message{
+        &__description{
+            font-size: 16px;
 
+        }
+    }
+
+}
 </style>

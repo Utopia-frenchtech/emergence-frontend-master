@@ -39,7 +39,6 @@ import caddieIcon from '@/assets/img/shop/caddie_icon.png'
 import closeIcon from '@/assets/img/shop/close_icon.png'
 export default {
     created(){
-        console.log("CREATED")
         this.loadTitle()
     },
     watch:{

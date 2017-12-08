@@ -37,7 +37,6 @@ export default {
                         categoryId: this.categoryId
                         }
                     }
-                 
             } else if (this.itemId){
                 return {
                     name:'ShopItem', 

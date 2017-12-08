@@ -1,5 +1,10 @@
 <template>
 <div class="shop-item item">
+    <router-link
+            :to="{name:'ShopItem', params:{itemId: item.id}}"
+            tag="div"
+            class="btn btn--zooming item__description-block"
+    >
                 <div class="item__image-wrapper">
                     <img :src="item.icon" :alt="item.title">
                 </div>
@@ -11,6 +16,7 @@
                        {{item.shortDescription}}
                    </p>
                 </div>
+</router-link>
             <div v-if="allowAdd || allowRemove" class="item__actions">
             <div v-if="allowAdd" class="item__price price">
                 <div class="price__value">

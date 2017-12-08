@@ -34,7 +34,7 @@ export default {
     methods:{
         addItem() { 
             API.shop.addItem(this.item)
-            this.$router.push({name:'ShopThanksMessage', query:{itemId: this.item.id}})
+            this.$router.push({name:'ShopThanksMessage', query:{categoryId: this.item.categoryId, itemId: this.item.id}})
         }
     }
 }

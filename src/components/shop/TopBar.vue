@@ -72,9 +72,7 @@ export default {
         if (this.title) {
             this.dynamicTitle = this.title
         } else if (this.categoryId){
-            console.log("HERE")
             API.shop.getCategory(this.categoryId).then(category => {
-                console.log("THERE")
                 this.dynamicTitle = category.title
                 this.icon = category.icon
             })

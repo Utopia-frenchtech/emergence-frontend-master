@@ -2,13 +2,7 @@
 <div class="shop-items">
     <ul class="items list--no-style">
         <li v-for="item in items" class="item__wrapper" :key="item.id">
-            <router-link 
-            :to="{name:'ShopItem', params:{itemId: item.id}}"
-            tag="div"
-            class="btn btn--zooming item__description-block"
-            >
             <item :item="item" :onAdd="onAdd" :onRemove="onRemove" :allowAdd="allowAdd" :allowRemove="allowRemove"/>
-            </router-link>
         </li>
     </ul>
 

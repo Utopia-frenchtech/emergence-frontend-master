@@ -3,7 +3,7 @@
                 <div class="item__image-wrapper">
                     <img :src="item.icon" :alt="item.title">
                 </div>
-                <div>
+                <div class="item__text">
                     <h2 class="item__title">
                      {{item.title}}
                      </h2>
@@ -11,7 +11,6 @@
                        {{item.shortDescription}}
                    </p>
                 </div>
-            </router-link>
             <div v-if="allowAdd || allowRemove" class="item__actions">
             <div v-if="allowAdd" class="item__price price">
                 <div class="price__value">
@@ -69,11 +68,16 @@ export default {
         &__description-block{
             display: flex;
         }
+        &__text{
+            padding-right: 32px;
+        }
         &__description{
             margin: 2px;
+            font-size: 18px;
         }
         &__title{
-            margin: 2px;
+            margin: 4px 0px;
+            font-size: 32px;
         }
         &__image-wrapper{
             display: flex;

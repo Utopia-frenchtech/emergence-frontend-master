@@ -7,14 +7,14 @@
             </router-link>
         </altai-button>
     </div>
-    <div class="title">
+        <router-link :to="this.link" tag="div" class="title">
         <div v-if="icon" class="title__icon">
             <img :src="icon" :alt="dynamicTitle + 'icon'"/>
             </div>
         <div class="title__text">
         {{dynamicTitle}}
         </div>
-    </div>
+        </router-link>
     <div class="actions">
         <altai-button isFlat isRound>
             <router-link :to="{name:'ShopCart'}" >
@@ -39,11 +39,13 @@ import caddieIcon from '@/assets/img/shop/caddie_icon.png'
 import closeIcon from '@/assets/img/shop/close_icon.png'
 export default {
     created(){
+        console.log("CREATED")
         this.loadTitle()
     },
-    beforeUpdate(){
-        this.loadTitle()
-
+    watch:{
+        title:{handler: function(){this.loadTitle()},},
+        categoryId:{handler: function(){this.loadTitle()},},
+        itemId:{handler: function(){this.loadTitle()},},
     },
     props:{
         title: {
@@ -63,22 +65,23 @@ export default {
         closeIcon,
         dynamicTitle: "Loading...",
         icon: undefined,
+        link: {name: 'Shop'},
     }},
     methods:{
         loadTitle(){
-
         if (this.title) {
             this.dynamicTitle = this.title
-            return
-        }
-        if (this.itemId){
-            API.shop.getItem(this.itemId).then(item => {
-                this.dynamicTitle = item.title
-            })
         } else if (this.categoryId){
+            console.log("HERE")
             API.shop.getCategory(this.categoryId).then(category => {
+                console.log("THERE")
                 this.dynamicTitle = category.title
                 this.icon = category.icon
+            })
+            this.link = {name: 'ShopCategory', params:{categoryId: this.categoryId}}
+        } else if (this.itemId) {
+            API.shop.getItem(this.itemId).then(item => {
+                this.dynamicTitle = item.title
             })
         }
         }

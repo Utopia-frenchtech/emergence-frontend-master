@@ -1,15 +1,7 @@
 <template>
-<div>
-    <div>
-        <img :src="item.icon" :alt="item.title">
-    <h1>{{item.title}}</h1>
-    <p>{{item.shortDescription}}</p>
-
-    </div>
-    <div>
-        {{item.price}}
-    </div>
-    <div>
+<div class="shop-item-page">
+    <item class="item__summary" :item="item" :allowAdd="true" :onAdd="addItem" />
+    <div class="item__long-description">
         {{item.longDescription}}
     </div>
 </div>
@@ -18,9 +10,11 @@
 
 <script>
 import API from '@/services/API'
+import Item from './Item'
+
 export default {
-    created(){
-        API.shop.getItem(this.itemId).then(item => this.item = item)
+    components:{
+        Item,
     },
     props:{
         itemId: {
@@ -29,14 +23,29 @@ export default {
         }
 
     },
+    created(){
+        API.shop.getItem(this.itemId).then(item => this.item = item)
+    },
     data(){return {
         item: {
             title: "Loading...",
         }
-    }}
+    }},
+    methods:{
+        addItem() { 
+            API.shop.addItem(this.item)
+            this.$router.push({name:'ShopThanksMessage', query:{itemId: this.item.id}})
+        }
+    }
 }
 </script>
 
-<style>
+<style lang="scss">
+.shop-item-page{
+.item__summary{
+    padding: 40px 0px;
+}
+
+}
 
 </style>

@@ -49,7 +49,7 @@ const shopRoutes = [
     },
     props: {
       content: (route) => ({ itemId: route.params.itemId }),
-      top: (route) => ({ itemId: route.params.itemId })
+      top: (route) => ({ itemId: route.params.itemId, categoryId: route.query.categoryId })
     }
   }, {
     name: 'ShopThanksMessage',

@@ -19,14 +19,20 @@
                    </p>
                 </div>
             </router-link>
-            <div class="item__price price">
+            <div v-if="allowAdd" class="item__price price">
                 <div class="price__value">
                 {{item.price}}
                 </div>
                 <button 
                 class="price__button"
-                @click="addItem(item)"
+                @click="onAdd(item)"
                 >{{$t('components.shop.cart.add')}}</button>
+            </div>
+            <div v-if="allowRemove" class="item__remove">
+                <button 
+                class="remove__button"
+                @click="onRemove(item)"
+                >{{$t('components.shop.cart.remove')}}</button>
             </div>
         </li>
     </ul>
@@ -35,31 +41,35 @@
 </template>
 
 <script>
+/** 
+A list of items
+Can enable or disable add to cart/remove from cart buttons
+*/
 import API from '@/services/API'
 import AltaiButton from '@/components/ui/AltaiButton'
 export default {
-    created(){
-        API.shop.getCategory(this.categoryId).then(category => this.category = category)
-        API.shop.getItems(this.categoryId).then(items => this.items = items)
-    },
     props:{
-        categoryId:{
-            type: String,
-            required: true,
+        items:{
+            type: Array,
+            default: [],
+        },
+        allowAdd:{
+            type: Boolean,
+            default: false,
+        },
+        onAdd:{
+            type: Function,
+            required: false,
+        },
+        allowRemove:{
+            type: Boolean,
+            default: false,
+        },
+        onRemove:{
+            type: Function,
+            required: false,
         }
     },
-    data(){return{
-        items:[],
-        category: {
-            title: "Loading...",
-        }
-    }},
-    methods:{
-        addItem(item) { 
-            API.shop.addItem(item)
-            this.$router.push({name:'ShopThanksMessage', query:{categoryId: this.category.id}})
-        }
-    }
 }
 </script>
 

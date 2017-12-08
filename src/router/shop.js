@@ -1,5 +1,6 @@
 import Categories from '@/components/shop/Categories'
-import ItemsList from '@/components/shop/ItemsList'
+import Category from '@/components/shop/Category'
+import Cart from '@/components/shop/Cart'
 import Item from '@/components/shop/Item'
 import ThanksMessage from '@/components/shop/ThanksMessage'
 import TopBar from '@/components/shop/TopBar'
@@ -21,13 +22,25 @@ const shopRoutes = [
     path: 'category/:categoryId',
     components: {
       top: TopBar,
-      content: ItemsList
+      content: Category
     },
     props: {
       content: (route) => ({ categoryId: route.params.categoryId }),
       top: (route) => ({ categoryId: route.params.categoryId })
     }
   }, {
+    path: 'cart',
+    name: 'ShopCart',
+    components: {
+      top: TopBar,
+      content: Cart
+    },
+    props: {
+      content: (route) => ({}),
+      top: (route) => ({})
+    }
+  },
+  {
     name: 'ShopItem',
     path: 'item/:itemId',
     components: {

@@ -37,7 +37,7 @@ const shopRoutes = [
     },
     props: {
       content: (route) => ({}),
-      top: (route) => ({})
+      top: (route) => ({i18n.t('components.shop.cart.topbar')})
     }
   },
   {

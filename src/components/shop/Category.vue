@@ -32,9 +32,11 @@ export default {
     }},
     methods:{
         addItem(item) { 
-            console.log("ADD")
             API.shop.addItem(item)
-            this.$router.push({name:'ShopThanksMessage', query:{categoryId: this.category.id}})
+            this.$router.push({name:'ShopThanksMessage', query:{
+                categoryId: this.category.id,
+                itemId: item.id
+                }})
         }
     }
 }

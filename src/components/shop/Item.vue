@@ -22,15 +22,17 @@
                 {{item.price}}
                 </div>
                 <button 
-                class="price__button"
+                class="btn btn--no-style price__button"
                 @click="onAdd(item)"
-                >{{$t('components.shop.cart.add')}}</button>
+                :title="$t('components.shop.cart.add')"
+                ><img :src="addIcon" :alt="$t('components.shop.cart.add')"/></button>
             </div>
             <div v-if="allowRemove" class="item__remove">
                 <button 
                 class="remove__button"
                 @click="onRemove(item)"
-                >{{$t('components.shop.cart.remove')}}</button>
+                :title="$t('components.shop.cart.remove')"
+                ><img :src="removeIcon" :alt="$t('components.shop.cart.remove')"/></button>
             </div>
             </div>
 </div>
@@ -38,6 +40,8 @@
 </template>
 
 <script>
+import addIcon from '@/assets/img/shop/free_add_icon.png';
+import removeIcon from '@/assets/img/shop/close_icon.png';
 export default {
     props:{
         item:{
@@ -61,7 +65,11 @@ export default {
             required: false,
         }
 
-    }
+    },
+    data(){return {
+        addIcon,
+        removeIcon,
+    }}
 
 }
 </script>

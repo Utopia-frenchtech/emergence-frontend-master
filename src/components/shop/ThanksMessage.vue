@@ -6,7 +6,7 @@
           {{t}}
       </p>
       </div>
-      <item v-if="item" :item="item" :allowAdd="false" :allowRemove="false"/>
+      <items-list :items="items" :allowAdd="false" :allowRemove="false"/>
       <p>
           <router-link :to="lastVisited">
           {{$t('components.shop.thanksMessage.continue')}}
@@ -22,28 +22,22 @@
 
 <script>
 import API from '@/services/API'
-import Item from './Item'
+import ItemsList from './ItemsList'
 export default {
     components:{
-        Item,
+        ItemsList,
     },
     created(){
-        if (this.itemId){
-            API.shop.getItem(this.itemId).then(item => this.item = item)
-        }
+            API.shop.getCartItems().then(items => this.items = items)
             },
             data(){return{
-                item: undefined,
+                items: [],
             }},
     props:{
         categoryId:{
             type: String,
             required: false,
         },
-        itemId: {
-            type: String,
-            required: false,
-        }
     },
     computed:{
         lastVisited(){
@@ -54,11 +48,6 @@ export default {
                         categoryId: this.categoryId
                         }
                     }
-            } else if (this.itemId){
-                return {
-                    name:'ShopItem', 
-                params: {itemId: this.itemId}
-                }
             }
             return { name: 'Shop'}
         }
@@ -68,6 +57,8 @@ export default {
 
 <style lang="scss">
 .shop-thanks-message{
+    padding-bottom: 16px;
+    height: 100%;
     .thanks-message{
         &__description{
             font-size: 16px;

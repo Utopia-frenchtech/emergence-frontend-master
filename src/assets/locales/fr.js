@@ -70,7 +70,7 @@ export default {
         title: 'Merci de vouloir ces supers fonctionnalités',
         description: 'Restez informé des nouveautés grâce à la newsletter.\nCes services ne sont pas implémentés pour la Bêta :o(\nMais nous y travaillons :o)',
         leave: 'Quitter le shop',
-        continue: 'Continuer votre shopping'
+        continue: 'Continuer mon shopping'
       },
       cart: {
         topbar: 'Ma liste de services',

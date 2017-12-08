@@ -92,6 +92,7 @@ $height: 48px;
 .shop-top-bar{
     .icon{
             height: 32px;
+            max-width: 48px;
     }
     display: flex;
     height: $height;

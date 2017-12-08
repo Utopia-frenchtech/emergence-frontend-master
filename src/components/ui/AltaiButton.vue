@@ -1,5 +1,7 @@
 <template>
-  <button class="altai-button" :class="{'altai-button--round': isRound, 'altai-button--flat': isFlat}">
+  <button class="altai-button"
+    @click="onClick"
+   :class="{'altai-button--round': isRound, 'altai-button--flat': isFlat}">
       <slot></slot>
   </button>
 </template>
@@ -14,6 +16,11 @@ export default {
       isFlat:{
         type: Boolean,
         default: false,
+      },
+      onClick:{
+        type: Function,
+        required: false,
+        default:()=>{}
       }
   },
   data: function data () {

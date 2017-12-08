@@ -21,18 +21,24 @@
                 <div class="price__value">
                 {{item.price}}
                 </div>
-                <button 
+                <altai-button 
+                isFlat
+                isRound
                 class="btn btn--no-style price__button"
-                @click="onAdd(item)"
+                :onClick="()=>onAdd(item)"
                 :title="$t('components.shop.cart.add')"
-                ><img :src="addIcon" :alt="$t('components.shop.cart.add')"/></button>
+                ><img :src="addIcon" :alt="$t('components.shop.cart.add')"/>
+                </altai-button>
             </div>
             <div v-if="allowRemove" class="item__remove">
-                <button 
+                <altai-button 
+                isFlat
+                isROund
                 class="remove__button"
-                @click="onRemove(item)"
+                :onClick="()=>onRemove(item)"
                 :title="$t('components.shop.cart.remove')"
-                ><img :src="removeIcon" :alt="$t('components.shop.cart.remove')"/></button>
+                ><img :src="removeIcon" :alt="$t('components.shop.cart.remove')"/>
+                </altai-button>
             </div>
             </div>
 </div>
@@ -101,6 +107,9 @@ export default {
             padding-left: 16px;
             display: flex;
             align-items: center;
+            button{
+                width: auto;
+            }
         }
 }
 </style>

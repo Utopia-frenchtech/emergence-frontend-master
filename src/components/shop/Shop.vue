@@ -14,12 +14,14 @@ export default {
 <style lang="scss">
 @import '~@/assets/style/variables/colors';
 .shop{
+    max-height: 100%;
+    height: 100%;
     .topbar{
         background-color: $greyDark;
         color: $white;
     }
     .content{
-        padding: 16px 8px;
+        padding: 16px 24px;
         background-color: $greyLight;
     }
 }

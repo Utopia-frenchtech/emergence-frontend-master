@@ -1,7 +1,7 @@
 import Categories from '@/components/shop/Categories'
 import Category from '@/components/shop/Category'
 import Cart from '@/components/shop/Cart'
-import Item from '@/components/shop/Item'
+import ItemPage from '@/components/shop/ItemPage'
 import ThanksMessage from '@/components/shop/ThanksMessage'
 import TopBar from '@/components/shop/TopBar'
 import i18n from '@/config/i18n'
@@ -37,7 +37,7 @@ const shopRoutes = [
     },
     props: {
       content: (route) => ({}),
-      top: (route) => ({i18n.t('components.shop.cart.topbar')})
+      top: (route) => ({title: i18n.t('components.shop.cart.topbar')})
     }
   },
   {
@@ -45,7 +45,7 @@ const shopRoutes = [
     path: 'item/:itemId',
     components: {
       top: TopBar,
-      content: Item
+      content: ItemPage
     },
     props: {
       content: (route) => ({ itemId: route.params.itemId }),

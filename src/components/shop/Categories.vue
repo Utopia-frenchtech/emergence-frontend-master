@@ -52,7 +52,7 @@ export default {
 .shop-categories{
     .categories{
         margin: 0;
-        padding: 0px 12px;
+        padding: 0px 0px;
         display: flex;
         flex-direction: row;
         flex-wrap:wrap;

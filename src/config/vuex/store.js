@@ -13,8 +13,7 @@ const storeConfig = {
     userId: localStorage.getItem('userId'),
     showLeftMenu: false,
     exp: localStorageHelpers.getJSONItem('exp') || { exp: 0, total: 100, level: 0 },
-    color: '#DFCEBC',
-    cart: {}
+    color: '#DFCEBC'
   },
   mutations: {
     updateUser (state, user) {
@@ -38,15 +37,6 @@ const storeConfig = {
     },
     toggleLeftMenu (state) {
       state.showLeftMenu = !state.showLeftMenu
-    },
-    addItemToCart (state, item) {
-      state.cart = {...state.cart, [item.id]: item}
-    },
-    removeItemFromCart (state, item) {
-      delete item.id in state.cart
-    },
-    emptyCart (state, item) {
-      state.cart = {}
     }
   },
   getters: {

@@ -20,16 +20,16 @@ export const shop = {
     resolve(fakeData.shop.item())
   }),
   addItem: (item) => new Promise((resolve, reject) => {
-    store.commit('addItemToCart', item)
     resolve()
   }),
   removeItem: (item) => new Promise((resolve, reject) => {
-    store.commit('removeItemFromCart', item)
     resolve()
   }),
   emptyCart: () => new Promise((resolve, reject) => {
-    store.commit('emptyCart')
     resolve()
+  }),
+  getCartItems: () => new Promise((resolve, reject) => {
+    resolve(Array(12).fill().map(fakeData.shop.item))
   })
 }
 

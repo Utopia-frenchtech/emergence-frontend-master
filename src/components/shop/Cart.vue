@@ -9,7 +9,11 @@
 
 <script>
 import ItemsList from './ItemsList'
+import API from '@/services/API'
 export default {
+    created(){
+        API.shop.getCartItems().then(items => this.items = items)
+    },
     components:{
         ItemsList
     },
@@ -17,8 +21,8 @@ export default {
         items: [],
     }},
     methods:{
-        removeItem(){
-            return
+        removeItem(item){
+            API.shop.removeItem(item)
         }
     }
 }

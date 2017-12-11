@@ -12,7 +12,8 @@ export default {
       password: 'Password',
       profileGame: 'Player profile',
       profileDev: 'Developer profile',
-      changepassword: 'Password to change'
+      changepassword: 'Password to change',
+      uservalides: 'You are not staying or you do not have an active account yet please confirm the information'
     }
   },
   components: {

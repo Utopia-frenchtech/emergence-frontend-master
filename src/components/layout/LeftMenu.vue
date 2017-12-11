@@ -1,9 +1,12 @@
 <template>
-  <nav v-on:click="closeLeftMenu" v-if="showLeftMenu" id="left-menu">
-    <div v-for="link in links" class="menu-item" v-if="!link.hidden" :key="link.name" >
-      <router-link v-on:click.native="closeLeftMenu" :to="{ name: link.name }"><button>{{link.label}}</button></router-link>
-    </div>
-  </nav>
+  <div>
+    <nav v-on:click="closeLeftMenu" v-if="showLeftMenu" id="left-menu">
+      <div v-for="link in links" class="menu-item" v-if="!link.hidden" :key="link.name" >
+        <router-link v-on:click.native="closeLeftMenu" :to="{ name: link.name }"><button>{{link.label}}</button></router-link>
+      </div>
+    </nav>
+  </div>
+
 </template>
 <script>
 import { mapState, mapGetters, mapMutations } from 'vuex'

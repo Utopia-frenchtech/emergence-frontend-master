@@ -50,7 +50,8 @@
 import _ from 'lodash'
 import AltaiButton from '@/components/ui/AltaiButton'
 import API from '@/services/API'
-// import firebase from 'firebase'
+import firebase from 'firebase'
+import {mapMutations} from 'vuex'
 export default {
   name: 'account',
   components: {
@@ -103,6 +104,7 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['valideUser']),
     onUpdate: function (e) {
       let $this = this
       API.user.update(this.newUser, this).then((user) => {
@@ -116,6 +118,17 @@ export default {
     }
   },
   mounted () {
+    let $this = this
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        console.log('yes', user)
+      } else {
+        const userId = 123
+//        $this.$router.push({ name: 'Signup', params: { userValitde: false }})
+        $this.$router.push({name: 'Signup', params: { userId }})
+        $this.valideUser(false)
+      }
+    })
   }
 }
 </script>

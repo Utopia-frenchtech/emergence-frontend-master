@@ -16,13 +16,13 @@
     <div class="links">
       <router-link :to="{ name: 'Login'}">{{$t('components.user.login.alreadyMember')}}</router-link>
     </div>
-  </div>
 </form>
 </template>
 <script>
 import AltaiButton from '@/components/ui/AltaiButton'
 import API from '@/services/API'
 import stringHelpers from '@/helpers/stringHelpers'
+import {mapState} from 'vuex'
 export default {
   name: 'signup',
   components: {
@@ -38,6 +38,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(['user', 'userValide']),
     isDisabled: function () {
       return stringHelpers.isEmpty(this.username) || stringHelpers.isEmpty(this.email) || stringHelpers.isSmaller(this.password, 6)
     }
@@ -53,6 +54,17 @@ export default {
         $this.message = error
       })
     }
+  },
+  mounted () {
+    console.log(this.user)
+    this.user.email ? this.email = this.user.email : null
+    this.user.username ? this.username = this.user.username : null
+    let valide = this.userValide
+    if (valide === false) {
+      this.invalide = true
+      this.message = this.$t('models.user.uservalides')
+    }
+    console.log(this.userValide)
   }
 }
 </script>

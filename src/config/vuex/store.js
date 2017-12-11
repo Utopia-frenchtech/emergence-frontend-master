@@ -13,9 +13,13 @@ const storeConfig = {
     userId: localStorage.getItem('userId'),
     showLeftMenu: false,
     exp: localStorageHelpers.getJSONItem('exp') || { exp: 0, total: 100, level: 0 },
-    color: '#DFCEBC'
+    color: '#DFCEBC',
+    userValide: true
   },
   mutations: {
+    valideUser (state, userValide) {
+      state.userValide = userValide
+    },
     updateUser (state, user) {
       state.user = user
     },

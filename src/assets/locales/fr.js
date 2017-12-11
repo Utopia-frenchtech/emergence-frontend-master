@@ -12,7 +12,8 @@ export default {
       password: 'Mot de passe',
       profileGame: 'Profil joueur',
       profileDev: 'Profil Développeur',
-      changepassword: 'Mot de passe bien changer'
+      changepassword: 'Mot de passe bien changer',
+      uservalides: 'vous n\'étes pas loger ou vous n\'avez pas encore de compte active merci de valider les informations'
     }
   },
   components: {

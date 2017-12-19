@@ -11,7 +11,7 @@
 // Maman for prod : ec2-52-35-6-213.us-west-2.compute.amazonaws.com 52.35.6.213
 const port = 1024
 export const Socket = () => new Promise((resolve, reject) => {
-  const socket = new window.WebSocket(`ws://52.35.6.213:${port}`)
+  const socket = new window.WebSocket(`ws://53.35.6.213:${port}`)
   // called when the socket is ready to receive messages
   socket.onopen = () => {
     resolve(socket)

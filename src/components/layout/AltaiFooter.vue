@@ -15,7 +15,7 @@ export default {
     return {
       links: [{
         label: 'Utopia',
-        link: 'http://utopia.french.tech',
+        link: 'http://utopia-french.tech',
         external: true
       }, {
         label: 'FirstOnes',

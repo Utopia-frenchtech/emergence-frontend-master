@@ -6,7 +6,7 @@
     <div class="menu-block user-menu">
       <div v-if="user" class="user-info">
         <div class="">
-          {{user.username}}
+          {{user.usname}}
         </div>
         <div>
           <level :level="exp.level"></level>

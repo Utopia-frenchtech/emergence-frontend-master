@@ -2,7 +2,7 @@
   <form v-on:submit.prevent="onSignup" id="signup" class="vertical big">
     <div style="color: red" v-if="invalide">{{message}}</div>
     <div class="">
-      <input type="text" name="username" v-model="username" :placeholder="$t('models.user.userName')">
+      <input type="text" name="username" v-model="usname" :placeholder="$t('models.user.userName')">
     </div>
     <div class="">
       <input type="text" name="email" v-model="email" :placeholder="$t('models.user.email')">
@@ -31,7 +31,7 @@ export default {
   data: function data () {
     return {
       email: '',
-      username: '',
+      usname: '',
       password: '',
       message: '',
       invalide: false
@@ -39,13 +39,14 @@ export default {
   },
   computed: {
     isDisabled: function () {
-      return stringHelpers.isEmpty(this.username) || stringHelpers.isEmpty(this.email) || stringHelpers.isSmaller(this.password, 6)
+      return stringHelpers.isEmpty(this.usname) || stringHelpers.isEmpty(this.email) || stringHelpers.isSmaller(this.password, 6)
     }
   },
   methods: {
     onSignup: function () {
       let $this = this
-      API.user.signup({ name: this.username, email: this.email, password: this.password }).then((user) => {
+      API.user.signup({ usname: this.usname, name: this.usname, email: this.email, password: this.password })
+      .then((user) => {
         // go back to the chat interface
         this.$router.push({ name: 'Chat' })
       }).catch(function (error) {

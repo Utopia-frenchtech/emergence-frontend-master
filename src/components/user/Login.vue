@@ -2,7 +2,7 @@
   <form v-on:submit.prevent="onLogin" id="login" class="vertical big">
     <div style="color: red" v-if="invalide">{{message}}</div>
     <div class="">
-      <input type="text" name="username" v-model="username" :placeholder="$t('models.user.userName')">
+      <input type="email" name="email" v-model="email" :placeholder="$t('models.user.email')">
     </div>
     <div class="">
       <input type="password" name="password" v-model="password" :placeholder="$t('models.user.password')">
@@ -26,7 +26,7 @@ export default {
   },
   data: function data () {
     return {
-      username: '',
+      email: '',
       password: '',
       message: '',
       invalide: false
@@ -34,13 +34,13 @@ export default {
   },
   computed: {
     isDisabled: function () {
-      return stringHelpers.isEmpty(this.username) || stringHelpers.isSmaller(this.password, 6)
+      return stringHelpers.isEmpty(this.email) || stringHelpers.isSmaller(this.password, 6)
     }
   },
   methods: {
     onLogin: function () {
       let $this = this
-      API.user.login({ email: this.username, password: this.password }).then((user) => {
+      API.user.login({ email: this.email, password: this.password }).then((user) => {
         // go back to the chat interface
         this.$router.push({ name: 'Chat' })
       }).catch(function (error) {

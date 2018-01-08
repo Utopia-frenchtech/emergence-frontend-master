@@ -1,12 +1,12 @@
 <template>
   <nav id="top-menu">
-    <div class="menu-block left-menu-button">
+    <div class="menu-block left-menu-button btn">
       <i class="fa fa-bars" v-on:click.prevent="toggleLeftMenu"></i>
     </div>
     <div class="menu-block user-menu">
       <div v-if="user" class="user-info">
         <div class="">
-          {{user.username}}
+          {{user.usname}}
         </div>
         <div>
           <level :level="exp.level"></level>

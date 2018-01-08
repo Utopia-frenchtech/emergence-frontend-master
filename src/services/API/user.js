@@ -57,13 +57,16 @@ export const user = {
             // console.log(profile)
           })
         }
-        db.ref('users').orderByChild('email').equalTo(data.email).on('value', snapshot => {
+        db.ref('users')
+        .orderByChild('email')
+        .equalTo(data.email)
+        .on('value', snapshot => {
           snapshot.forEach(function (profile) {
             const users = {
-              id: profile.key,
-              firstname: profile.val().name,
-              lastname: profile.val().lname,
-              username: profile.val().usname,
+              uid: profile.key,
+              name: profile.val().name,
+              lname: profile.val().lname,
+              usname: profile.val().usname,
               email: profile.val().email,
               profilgame: profile.val().casej,
               profildev: profile.val().casedev
@@ -107,24 +110,25 @@ export const user = {
         if (users != null) {
           users.providerData.forEach(function (profile) {
             // resolve(user)
-            db.ref('users').push({
+            db.ref('users').child(data.uid).set({
               uid: data.uid,
-              usname: user.name,
+              usname: user.usname,
+              name: user.name,
               email: profile.email,
               casej: false,
               casedev: false
             })
             const usersdata = {
-              id: data.uid,
-              firstname: '',
-              lastname: '',
-              username: user.name,
-              email: profile.emaill,
+              uid: data.uid,
+              name: '',
+              lname: '',
+              usname: user.name,
+              email: profile.email,
               profilgame: false,
               profildev: false
             }
             // user.id = randomId
-            localStorageHelpers.setJSONItem('user', user)
+            localStorageHelpers.setJSONItem('user', usersdata)
             /* ancien code */
             // localStorage.setItem('userId', randomId)
             // localStorage.setItem('token', token)
@@ -142,19 +146,22 @@ export const user = {
    * @param  {*} user [description]
    * @return {*}      [description]
    */
-  update: (user, $this) => (new Promise((resolve, reject) => {
+  update: (userData, $this) => (new Promise((resolve, reject) => {
     // thats an update so we conserve existing values when it makes sense
-    const id = user.id
-    delete user['id']
-    console.log(user)
-    let users = firebase.auth().currentUser
-    if (users) {
-      db.ref('users').child(id).set(user)
-      users.updatePassword(user.password).then(function (e) {
-        resolve(users)
+    const uid = userData.uid
+    delete userData['uid']
+    console.log(userData, uid)
+    let user = firebase.auth().currentUser
+    db.ref('users').child(uid).set(userData)
+    // update the password if necessary
+    if (user && userData.password) {
+      user.updatePassword(userData.password).then(function (e) {
+        resolve(user)
       }).catch(function (error) {
         reject(error)
       })
+    } else {
+      resolve(user)
     }
     /* ancien code */
     // const currentUser = localStorageHelpers.getJSONItem('user', user)

@@ -6,25 +6,25 @@
     </div>
     <div class="flex">
       <div class="input-100">
-        <input type="text" name="UserName"  v-model="username" :placeholder="$t('models.user.userName')" >
+        <input type="text" name="UserName"  v-model="usname" :placeholder="$t('models.user.userName')" >
       </div>
     </div>
     <div class="flex">
       <div>
-        <input type="text" name="firstName"  v-model="firstname"  :placeholder="$t('models.user.firstName')">
+        <input type="text" name="firstName"  v-model="name"  :placeholder="$t('models.user.firstName')">
       </div>
       <div>
-        <input type="text" name="lastName" v-model="lastname" :placeholder="$t('models.user.lastName')">
+        <input type="text" name="lastName" v-model="lname" :placeholder="$t('models.user.lastName')">
       </div>
     </div>
     <div class="flex">
       <div class="input-100">
-        <input type="email" name="email" v-model="email" :placeholder="$t('models.user.email')">
+        <input type="email" name="email"  autocomplete="off" v-model="email" :placeholder="$t('models.user.email')">
       </div>
     </div>
     <div class="flex">
       <div class="input-100">
-        <input type="password" name="password" v-model="password" :placeholder="$t('models.user.password')">
+        <input type="password" name="password" autocomplete="off"  v-model="password" :placeholder="$t('models.user.password')">
       </div>
     </div>
     <div class="flex">
@@ -59,10 +59,10 @@ export default {
   },
   data: function data () {
     return {
-      id: null,
-      username: null,
-      firstname: null,
-      lastname: null,
+      uid: null,
+      usname: null,
+      name: null,
+      lname: null,
       email: null,
       profilgame: false,
       profildev: false,
@@ -81,10 +81,10 @@ export default {
     initialUser () {
       const user = this.$store.state.user
       return {
-        id: user.id || null,
-        username: user.username || null,
-        firstname: user.firstname || null,
-        lastname: user.lastname || null,
+        uid: user.uid || null,
+        usname: user.usname || null,
+        name: user.name || null,
+        lname: user.lname || null,
         email: user.email || null,
         profilgame: user.profilgame || false,
         profildev: user.profildev || false
@@ -92,10 +92,10 @@ export default {
     },
     newUser () {
       return {
-        id: this.id,
-        usname: this.username,
-        name: this.firstname,
-        lname: this.lastname,
+        uid: this.uid,
+        usname: this.usname,
+        name: this.name,
+        lname: this.lname,
         email: this.email,
         casej: this.profilgame,
         casedev: this.profildev,

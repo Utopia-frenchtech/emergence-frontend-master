@@ -12,14 +12,14 @@ export default {
       password: 'Mot de passe',
       profileGame: 'Profil joueur',
       profileDev: 'Profil Développeur',
-      changepassword: 'Mot de passe bien changer',
-      uservalides: 'vous n\'étes pas loger ou vous n\'avez pas encore de compte active merci de valider les informations'
+      changepassword: 'Mot de passe bien changé',
+      uservalides: 'vous n\'étes pas logé(e) ou vous n\'avez pas encore de compte actif merci de valider les informations'
     }
   },
   components: {
     'chat': {
       label: 'Chat',
-      firstMessage: `Bonjour, petit humain. Si tu souhaites discuter, envoie moi un message à l'aide du formulaire.`,
+      firstMessage: `Bonjour, petit humain. Si tu souhaites me contacter, utilise le formulaire.`,
       form: {
         label: 'Parle ici:',
         button: 'Poster',

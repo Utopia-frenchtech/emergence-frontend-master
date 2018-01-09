@@ -3,9 +3,11 @@
           <div class="buttons">
               <ShopTopButton/>
           </div>
+          &nbsp;
         <div class="">
           {{user.username}}
         </div>
+        &nbsp; 
         <div>
           <level :level="exp.level"></level>
         </div>

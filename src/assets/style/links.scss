@@ -1,4 +1,4 @@
-a {
+a:not(.link--discrete) {
     color: #222222;
     font-style: italic;
     text-decoration: none;

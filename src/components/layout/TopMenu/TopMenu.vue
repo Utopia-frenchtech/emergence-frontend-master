@@ -4,14 +4,7 @@
       <i class="fa fa-bars" v-on:click.prevent="toggleLeftMenu"></i>
     </div>
     <div class="menu-block user-menu">
-      <div v-if="user" class="user-info">
-        <div class="">
-          {{user.usname}}
-        </div>
-        <div>
-          <level :level="exp.level"></level>
-        </div>
-      </div>
+      <logged-in-menu v-if="user" :user="user" :exp="exp" class="user-info"/>
       <div v-else class="user-login">
         <router-link :to="{ name: 'Login'}">
           <altai-button>{{$t('components.user.login.label')}}</altai-button>
@@ -21,15 +14,15 @@
   </nav>
 </template>
 <script>
-import Level from '@/components/emergence/Level'
 import AltaiButton from '@/components/ui/AltaiButton'
+import LoggedInMenu from './LoggedInMenu'
 import { mapState, mapGetters, mapMutations } from 'vuex'
 
 export default {
   name: 'top-menu',
   components: {
-    Level,
-    AltaiButton
+    AltaiButton,
+    LoggedInMenu,
   },
   data: function data () {
     return {
@@ -59,11 +52,6 @@ export default {
   .user-menu{
     flex-grow: 1;
     text-align: right;
-  }
-  .user-info{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
 }
 

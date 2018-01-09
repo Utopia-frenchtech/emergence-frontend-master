@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import shopRoutes from './shop'
 import ChatPage from '@/components/chat/ChatPage'
 import UserPage from '@/components/user/UserPage'
 import Login from '@/components/user/Login'
@@ -8,6 +9,7 @@ import Logout from '@/components/user/Logout'
 import Account from '@/components/user/Account'
 import LegalTerms from '@/components/info/LegalTerms'
 import TestPage from '@/components/test/test'
+import Shop from '@/components/shop/Shop'
 
 Vue.use(Router)
 
@@ -53,6 +55,10 @@ const routes = [
     name: 'LegalTerms',
     path: '/legal-terms',
     component: LegalTerms
+  }, {
+    path: '/shop',
+    component: Shop,
+    children: shopRoutes
   }
 ]
 

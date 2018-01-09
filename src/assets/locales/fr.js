@@ -56,6 +56,36 @@ export default {
         button: 'Déconnexion',
         anotherAccount: 'Se connecter avec un autre compte'
       }
+    },
+
+    shop: {
+      categories: {
+        topbar: 'Emergence IApp Store',
+        welcome: {
+          title: 'Bienvenue dans le shop de services Emergence !',
+          message: 'De nouvelles fonctionnalités, de nouvelles connaissances pour votre IA !\nMettez tout ce que vous voulez dans le panier,  ça ne coûte rien, et ça fait avancer la Bêta…'
+        }
+      },
+      thanksMessage: {
+        topbar: 'Ma liste de services',
+        title: 'Merci de vouloir ces supers fonctionnalités',
+        description: 'Restez informé des nouveautés grâce à la newsletter.\nCes services ne sont pas implémentés pour la Bêta :o(\nMais nous y travaillons :o)',
+        leave: 'Quitter le shop',
+        continue: 'Continuer mon shopping'
+      },
+      cart: {
+        topbar: 'Ma liste de services',
+        cart: 'panier',
+        add: 'Ajouter',
+        addToCart: '@:components.shop.add au @:components.shop.cart',
+        remove: 'Supprimer',
+        removeFrom: '@:components.shop.remove du @:components.shop.cart',
+        empty: 'Vider le @:components.shop.cart'
+      },
+      topbar: {
+        close: 'Quitter le shop',
+        cart: 'Accéder au @:components.shop.cart.cart'
+      }
     }
   },
   links: {

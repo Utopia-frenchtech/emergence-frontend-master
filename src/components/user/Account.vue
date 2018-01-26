@@ -6,7 +6,7 @@
     </div>
     <div class="flex">
       <div class="input-100">
-        <input type="text" name="UserName"  v-model="usname" :placeholder="$t('models.user.userName')" >
+        <input type="text" name="UserName"  style="margin-top: 200px" v-model="usname" :placeholder="$t('models.user.userName')" >
       </div>
     </div>
     <div class="flex">
@@ -15,6 +15,24 @@
       </div>
       <div>
         <input type="text" name="lastName" v-model="lname" :placeholder="$t('models.user.lastName')">
+      </div>
+    </div>
+    <div class="flex">
+      <div>
+        <input type="text" name="color"  v-model="color"  :placeholder="$t('models.user.color')">
+      </div>
+      <div>
+        <input type="text" name="vename" v-model="vename" :placeholder="$t('models.user.veName')">
+      </div>
+    </div>
+    <div class="flex">
+      <div class="input-100">
+        <input type="text" name="fbaccount"  autocomplete="off" v-model="fbaccount" :placeholder="$t('models.user.fbAccount')">
+      </div>
+    </div>
+    <div class="flex">
+      <div class="input-100">
+        <input type="text" name="city"  autocomplete="off" v-model="city" :placeholder="$t('models.user.city')">
       </div>
     </div>
     <div class="flex">
@@ -87,7 +105,11 @@ export default {
         lname: user.lname || null,
         email: user.email || null,
         profilgame: user.profilgame || false,
-        profildev: user.profildev || false
+        profildev: user.profildev || false,
+        color: user.color || null,
+        city: user.city || null,
+        vename: user.vename || null,
+        fbaccount: user.fbaccount || null
       }
     },
     newUser () {
@@ -99,7 +121,11 @@ export default {
         email: this.email,
         casej: this.profilgame,
         casedev: this.profildev,
-        password: this.password
+        password: this.password,
+        color: this.color,
+        city: this.city,
+        vename: this.vename,
+        fbaccount: this.fbaccount,
       }
     }
   },
@@ -113,7 +139,7 @@ export default {
       }).catch(function (error) {
         $this.invalide = true
         $this.message = error
-        console.log(error)
+        console.log('error',error)
       })
     }
   },
@@ -121,7 +147,7 @@ export default {
     let $this = this
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
-        console.log('yes', user)
+        // store.commit('updateUserId', user.uid)
       } else {
         const userId = 123
 //        $this.$router.push({ name: 'Signup', params: { userValitde: false }})

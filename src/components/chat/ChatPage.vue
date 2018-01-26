@@ -4,7 +4,7 @@
       <div v-for="messages in messagesByDay" :key="messages.createdAt">
         <date-separator :date="messages.createdAt"></date-separator>
         <div v-for="message in messages.messages" :key="message.createdAt">
-          <message :message="message" :self="message.sender.id === userId"></message>
+          <message :message="message" :self="message.sender.id === cs_uid"></message>
         </div>
       </div>
     </div>
@@ -46,7 +46,7 @@ export default {
         // to be printed when there are 0 message
         {
           sender: {
-            name: 'Altaï',
+            name: 'Altai',
             id: -1
           },
           content: this.$i18n.t('components.chat.firstMessage'),
@@ -70,7 +70,14 @@ export default {
         return 0
       }) // sort by date, reversed
     },
-    ...mapState(['user', 'userId', 'exp'])
+    // ...mapState(['user', 'exp']),
+    ...mapState(['user', 'userId','exp']),
+    cs_uid: function(){
+      if (this.user==null){
+        return 0
+      }
+      return this.user.cs_uid
+    }
   },
   updated: function () {
     // scroll to bottom when messages are updated
@@ -85,11 +92,14 @@ export default {
     postMessage: function (messageContent, name) {
       const message = {
         sender: {
-          id: this.userId, // NOTE : there should always be a unique ID, event for new users, due to ChatScript behaviour
+          id: this.user.cs_uid, // NOTE : there should always be a unique ID, event for new users, due to ChatScript behaviour
+          // id: this.$store.state.user.uid, // NOTE : there should always be a unique ID, event for new users, due to ChatScript behaviour
           name: name || this.user.name
         },
         content: messageContent,
-        createdAt: (new Date()).toISOString()
+        createdAt: (new Date()).toISOString(),
+        // bot: this.$store.state.vename
+        bot: 'Altai'
       }
       // add user message
       this.messages = [...this.messages, message]

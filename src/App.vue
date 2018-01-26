@@ -55,19 +55,26 @@ export default {
     }
   },
   mounted () {
-    const { color, usname } = this.$route.query
+    let { color, usname } = this.$route.query
+    usname = usname.replace(' ', '_')
     if (usname) {
       db.ref('users').child(usname).on('value', snapshot => {
         const data = snapshot.val()
-        console.log(data)
+        console.log('data',data)
         const users = {
           id: usname,
+          cs_uid: data.cs_uid,
           firstname: data.name,
           lastname: data.lname,
           username: data.usname,
+          usname:data.usname,
           email: data.email,
           profilgame: data.casej,
-          profildev: data.casedev
+          profildev: data.casedev,
+          vename: data.vename,
+          color: data.color,
+          city: data.city,
+          fbaccount: data.fbaccount
         }
         this.$store.commit('updateUser', users)
         this.loading = false

@@ -1,5 +1,7 @@
 <template>
       <div class="logged-in-menu">
+          <div>{{this.$store.state.user.vename}}</div>
+            &nbsp;
           <div class="buttons">
               <ShopTopButton/>
           </div>
@@ -7,7 +9,7 @@
         <div class="">
           {{user.username}}
         </div>
-        &nbsp; 
+        &nbsp;
         <div>
           <level :level="exp.level"></level>
         </div>

@@ -57,13 +57,14 @@ export default {
     }
   },
   mounted () {
-    console.log(this.user)
-    this.user.email ? this.email = this.user.email : null
-    this.user.username ? this.username = this.user.username : null
+    // console.log(this.user)
+    // this.user.email ? this.email = this.user.email : null
+    // this.user.username ? this.username = this.user.username : null
     let valide = this.userValide
-    if (valide === false) {
+    if (valide === false&&this.user!=null) {
       this.invalide = true
       this.message = this.$t('models.user.uservalides')
+      this.usname = this.user.username
     }
     console.log(this.userValide)
   }
